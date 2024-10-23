@@ -1,0 +1,95 @@
+﻿@model Projeto.ViewModels.EditVM
+
+@{
+    ViewData["Title"] = "Edit User";
+
+    string profilePicture = "";
+
+    if(Model.ProfilePictureUrl == null)
+    {
+        profilePicture = "/ProfilePictures/default.jpg";
+    }
+    else
+    {
+        profilePicture = "/ProfilePictures/" + Model.ProfilePictureUrl;
+    }
+}
+
+<div class="return">
+    <a asp-action="Index" asp-controller="User" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+<h2>Perfil</h2>
+<div class="card-register">
+    <form asp-action="Register" asp-controller="User" asp-area="Admin" enctype="multipart/form-data">
+        <div class="form-container">
+            <div class="left-column">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="top-label-form">First Name</label>
+                        <input type="text" asp-for="FirstName" class="form-control"
+                               placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="top-label-form">Last Name</label>
+                        <input type="text" asp-for="LastName" class="form-control"
+                               placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="label-form">Email</label>
+                        <input type="email" asp-for="Email" class="form-control"
+                               placeholder="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-form">Phone Number</label>
+                        <input type="text" asp-for="PhoneNumber" class="form-control"
+                               placeholder="Phone Number">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="label-form">Username</label>
+                        <input type="text" asp-for="UserName" class="form-control"
+                               placeholder="UserName">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="form-group">
+                    @if (Model?.ProfilePictureUrl == null)
+                    {
+                        <img class="profile-photo-form" src="~/ProfilePictures/default.jpg" alt="Foto de Perfil">
+                    }
+                    else
+                    {
+                        <img class="profile-photo-form" src="~/ProfilePictures/@(Model.ProfilePictureUrl)" alt="Foto de Perfil">
+                    }
+                </div>
+                <label class="label-form">Profile Picture</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" asp-for="ProfilePicture" class="custom-file-input" id="picture" />
+                        <label class="custom-file-label">Choose file</label>
+                        <span asp-validation-for="ProfilePicture" class="text-bg-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-2 mt-3">
+            <button type="submit" class="submit-user">Create User</button>
+        </div>
+    </form>
+
+</div>
+<script src="~/Admin/js/dropdownRegister.js"></script>
+<script src="~/Admin/js/ChooseFile.js"></script>

@@ -1,0 +1,137 @@
+﻿@model Projeto.ViewModels.CreatePostVM
+
+@{
+    ViewData["Title"] = "Edit Post";
+
+    string Thumbnail = "";
+
+    if (Model.ThumbnailUrl == null)
+    {
+        Thumbnail = "/Thumbnails/default_image.png";
+    }
+    else
+    {
+        Thumbnail = "/Thumbnails/Posts/" + Model.ThumbnailUrl;
+    }
+}
+
+
+@* <div class="return">
+    <a asp-action="Index" asp-controller="Post" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+    <h2>Edit Post</h2>
+    <div class="card">
+        <form asp-action="Edit" asp-controller="Post" asp-area="Admin" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Title</label>
+                            <input type="text" asp-for="Title" class="form-control" 
+                            placeholder="Title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label>Short Description</label>
+                            <input type="text" asp-for="ShortDescription" class="form-control" 
+                             placeholder="Short Description"/>
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                        <div class="col-12">
+                            <div class="mt-5">
+                                <label>Description</label>
+                                <textarea id="description" asp-for="Description" class="form-control"
+                                placeholder="Description"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-3">
+                    <div class="mb-2 mx-auto">
+                        <img id="thumbnailPreview" src="@Thumbnail" class="img-fluid" style="border-radius: 5px" />
+                    </div>
+                    <div class="input-group">
+                        <div class="custom-file mt-2">
+                            <input type="file" asp-for="Thumbnail" class="custom-file-input" id="picture">
+                            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                            <span asp-validation-for="Thumbnail" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2 mt-3">
+                <button type="submit" class="submit-post">Save</button>
+            </div>
+        </form>
+    </div> *@
+
+<div class="return">
+    <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+
+<h2>Criar Post</h2>
+<div class="card-about">
+    <form asp-action="Edit" asp-controller="Post" asp-area="Admin" enctype="multipart/form-data">
+        <div class="form-container">
+            <!-- Coluna esquerda para os inputs -->
+            <div class="left-column">
+                <div class="form-group">
+                    <label class="top-label-form">Title</label>
+                    <input type="text" asp-for="Title" class="form-control" placeholder="Title" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="label-form">Short Description</label>
+                    <input type="text" asp-for="ShortDescription" class="form-control" placeholder="Short Description" />
+                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="label-form">Description</label>
+                    <textarea id="description" asp-for="Description" class="form-control" rows="9" placeholder="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="IsPublic" class="label-form">Privacidade</label>
+                    <input type="checkbox" value="true" id="IsPublic" name="IsPublic" class="input-toggle" @(Model.IsPublic ? "checked" : "")>
+
+                    <div class="display">
+                        <label class="toggle" for="IsPublic">
+                            <div class="circle">
+                                <span class="material-icons-sharp span lock">lock</span>
+                                <span class="material-icons-sharp span lockOpen">lock_open</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna direita para upload de arquivos e pré-visualização -->
+            <div class="right-column">
+                <div class="form-group">
+                    <img id="thumbnailPreview" src="@Thumbnail" class="img-chooseFile" />
+                </div>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" asp-for="Thumbnail" class="custom-file-input" id="picture">
+                        <label class="custom-file-label" for="picture">Choose file</label>
+                    </div>
+                </div>
+                <span asp-validation-for="Thumbnail" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Botão de envio -->
+        <div class="mb-2 mt-3 text-right">
+            <button type="submit" class="submit-post">Save</button>
+        </div>
+    </form>
+</div>
+<script src="~/Admin/js/ChooseFile.js"></script>

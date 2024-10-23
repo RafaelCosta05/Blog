@@ -1,0 +1,106 @@
+﻿@model Projeto.ViewModels.SettingVM
+
+@{
+    ViewData["Title"] = "Site Setting";
+
+    string Thumbnail = "";
+
+    if (Model.ThumbnailUrl == null)
+    {
+        Thumbnail = "/Thumbnails/default_image.png";
+    }
+    else
+    {
+        Thumbnail = "/Thumbnails/Page/About" + Model.ThumbnailUrl;
+    }
+}
+
+    <div class="return">
+    <a asp-area="Admin" asp-controller="Opening" asp-action="Index" class="link">
+            <span class="material-icons-sharp">arrow_back</span>
+            <h3>Voltar atrás</h3>
+        </a>
+    </div>
+    <h2>Site Settings</h2>
+<div class="card-settings">
+        <form asp-action="Index" asp-controller="Setting" asp-area="Admin" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-container">
+                <div class="left-column">
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label class="top-label-form">Site Name</label>
+                            <input type="text" asp-for="SiteName" class="form-control" 
+                                placeholder="Name of Site"/>
+                            <span asp-validation-for="SiteName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                        <label class="top-label-form">Title</label>
+                            <input type="text" asp-for="Title" class="form-control" 
+                                placeholder="Title"/>
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label class="label-form">Short Description</label>
+                            <input type="text" asp-for="ShortDescription" class="form-control"
+                                placeholder="Short Description">
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-5">
+                        <label class="label-form">Facebook Url</label>
+                            <input type="text" asp-for="FacebookUrl" class="form-control"
+                                placeholder="Facebook Url">
+                            <span asp-validation-for="FacebookUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                        <label class="label-form">Twitter Url</label>
+                            <input type="text" asp-for="TwitterUrl" class="form-control"
+                                placeholder="Twitter Url">
+                            <span asp-validation-for="TwitterUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                        <label class="label-form">GitHub Url</label>
+                            <input type="text" asp-for="GithubUrl" class="form-control"
+                                placeholder="GitHub Url">
+                            <span asp-validation-for="GithubUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+@*                 <div class="right-column">
+                    <div class="form-group">
+                        <img id="thumbnailPreview" src="@Thumbnail" class="img-chooseFile" />
+                        <div class="input-group">
+                            <div class="custom-file">
+                            <label class="label-form">Thumbnail</label>
+                                <input type="file" asp-for="Thumbnail" class="custom-file-input" id="picture" />
+                                <label class="custom-file-label">Choose file</label>
+                                <span asp-validation-for="Thumbnail" class="text-bg-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+            <div class="right-column">
+                <div class="form-row-right">
+                    <div class="form-group">
+                          <img id="thumbnailPreview" src="@Thumbnail" class="img-chooseFile" />
+                    </div>
+                    <div class="form-group">
+                    <label class="label-form">Thumbnail</label>
+                        <div class="custom-file">
+                            <input type="file" asp-for="Thumbnail" class="custom-file-input" id="picture" />
+                            <label class="custom-file-label">Choose file</label>
+                            <span asp-validation-for="Thumbnail" class="text-bg-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                <div class="btn">
+                    <button type="submit" class="submit-settings">Save</button>
+                </div>
+        </form>
+    </div>

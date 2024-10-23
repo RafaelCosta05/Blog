@@ -1,0 +1,25 @@
+﻿@model Projeto.ViewModels.UserVM
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager;
+
+@{
+    ViewData["Title"] = "Opening Page";
+    var loggedInUser = new ApplicationUser();
+    loggedInUser = _userManager.Users?.FirstOrDefault(x => x.UserName == User.Identity!.Name);
+}
+
+<div class="opening">
+    <h1>
+        <span class="success">Bem vindo</span> de volta, @loggedInUser?.FirstName @loggedInUser?.LastName
+    </h1>
+    <div class="images">
+        <img src="~/sidebarImg/admin.png">
+        <img src="~/sidebarImg/editor.png">
+        <img src="~/sidebarImg/author.png">
+    </div>
+    <div class="clock" id="clock"></div>
+</div>
+
+<script src="~/Admin/js/clock.js"></script>
+

@@ -1,0 +1,105 @@
+﻿@model Projeto.ViewModels.BlogPostVM
+
+@{
+    ViewData["Title"] = "Post";
+
+    // string thumbnail = "";
+
+    // if (Model.ThumbnailUrl == null)
+    // {
+    //     thumbnail = "assets/img/post-bg.jpg";
+    // }
+    // else
+    // {
+    //     thumbnail = "/Thumbnails/Posts/" + Model.ThumbnailUrl;
+    // } 
+}
+
+<section class="post-header">
+    <div class="header-content post-container">
+        @* <span class="material-icons-sharp">arrow_back</span> *@
+        <a asp-area="Blog" asp-controller="Home" asp-action="Index">
+            <span class="material-icons-sharp">arrow_back</span>
+        </a>
+        <h1 class="header-title">@Model.Title</h1>
+        @if (Model.ThumbnailUrl == null)
+        {
+            <img class="header-img" src="~/Thumbnails/default_image.png" />
+        }
+        else
+        {
+            <img class="header-img" src="~/Thumbnails/Posts/@Model.ThumbnailUrl" />
+        }
+    </div>
+</section>
+
+<section class="post-content post-container">
+    <h2 class="sub-heading">@Model.shortDescription</h2>
+    <p class="post-text">@Html.Raw(Model.Description) </p>
+</section>
+
+<div class="ratingValue">
+    <h3>Classificação: @Model.AverageRating</h3>
+</div>
+
+@if (User.Identity!.IsAuthenticated)
+{
+    <form asp-action="Post" method="post" class="post-form">
+        <div class="rating">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <span class="material-icons-sharp star
+                        @(Model.UserRating.HasValue && Model.UserRating.Value >= i ? "filled" : "")"
+                      data-value="@i"
+                      onclick="setRating(@i)">
+                    star
+                </span>
+            }
+        </div>
+
+        <input type="hidden" id="RatingValue" name="Value" value="@Model.UserRating" />
+        <input type="hidden" name="PostId" value="@Model.Id" />
+
+        <button type="submit" class="submit-rating">Enviar Avaliação</button>
+    </form>
+}
+else
+{
+    <div class="rating-noLogin">
+        <p>Se quiser avaliar, você deve <a asp-area="Admin" asp-controller="User" asp-action="Login">fazer login</a></p>
+    </div>
+}
+
+<div class="share post-container">
+    <span class="share-title">Partilha este artigo</span>
+    <div class="social">
+        <a href="#">
+            <i class='bx bxl-twitter'></i>
+        </a>
+        <a href="#">
+            <i class='bx bxl-facebook'></i>
+        </a>
+        <a href="#">
+            <i class='bx bxl-github'></i>
+        </a>
+    </div>
+</div>
+
+
+<script>
+    function setRating(value) {
+        // Define o valor do rating no campo oculto
+        document.getElementById('RatingValue').value = value;
+
+        // Remove a classe "filled" de todas as estrelas
+        var stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.classList.remove('filled');
+        });
+
+        // Adiciona a classe "filled" às estrelas até o valor clicado
+        for (let i = 1; i <= value; i++) {
+            stars[i - 1].classList.add('filled');
+        }
+    }
+</script>

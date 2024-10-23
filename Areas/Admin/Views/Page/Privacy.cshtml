@@ -1,0 +1,72 @@
+﻿@model Projeto.ViewModels.PageVM
+
+@{
+    ViewData["Title"] = "Privacy Page";
+
+    string Thumbnail = "";
+
+    if (Model.ThumbnailUrl == null)
+    {
+        Thumbnail = "/Thumbnails/default_image.png";
+    }
+    else
+    {
+        Thumbnail = "/Thumbnails/Page/About" + Model.ThumbnailUrl;
+    }
+}
+
+<div class="return">
+    <a asp-area="Admin" asp-controller="Opening" asp-action="Index" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+    <h2>Página Política de Privacidade</h2>
+    <div class="card-privacy">
+        <form asp-action="About" asp-controller="Page" asp-area="Admin" enctype="multipart/form-data">
+            <div class="form-container">
+                <!-- Coluna esquerda para os inputs -->
+                <div class="left-column">
+                    <div class="form-group">
+                        <label class="top-label-form">Title</label>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="Title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-form">Short Description</label>
+                        <input type="text" asp-for="ShortDescription" class="form-control" placeholder="Short Description" />
+                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-form">Description</label>
+                        <textarea id="description" asp-for="Description" class="form-control" rows="9" placeholder="Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <div class="form-row-right">
+                        <div class="form-group">
+                            <img id="thumbnailPreview" src="@Thumbnail" class="img-chooseFile" />
+                        </div>
+                        <div class="form-group">
+                            <label class="label-form">Thumbnail</label>
+                            <div class="custom-file">
+                                <input type="file" asp-for="Thumbnail" class="custom-file-input" id="picture" />
+                                <label class="custom-file-label">Choose file</label>
+                                <span asp-validation-for="Thumbnail" class="text-bg-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão de envio -->
+            <div class="btn">
+                <button type="submit" class="submit-privacy">Save</button>
+            </div>
+        </form>
+    </div>
+
+
+<script src="~/Admin/js/ChooseFile.js"></script>

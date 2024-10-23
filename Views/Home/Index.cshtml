@@ -1,0 +1,167 @@
+﻿@model Projeto.ViewModels.HomeVM;
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    string thumbnail = "";
+
+    // if (Model.ThumbnailUrl == null)
+    // {
+    //     thumbnail = "blog/assets/img/home-bg.jpg";
+    // }
+    // else
+    // {
+    //     thumbnail = "/Thumbnails/Page/Home" + Model.ThumbnailUrl;
+    // }
+
+    thumbnail = "/Thumbnails/Page/Home" + Model.ThumbnailUrl;
+}
+
+<section class="home" id="home" style="background-image: url('@thumbnail')">
+    <div class="home-text container">
+        <h2 class="home-title">@Model.Title</h2>
+        <span class="home-subtitle">@Model.ShortDescription</span>
+    </div>
+</section>
+
+<div class="pages-filter container">
+    <div class="menu-icon">
+        <span b-9j61l8gp78="" class="material-icons-sharp"
+              onclick="openSidebar()">menu</span>
+    </div>
+    <a asp-controller="Home" asp-action="Index" class="link">
+        <span class="filter-item active-filter" data-filter='posts'>
+            Posts           
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="About1" class="link">
+        <span class="filter-item" data-filter='about'>
+            About
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="Contact1" class="link">
+        <span class="filter-item" data-filter='contact'>
+            Contact
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="PrivacyPolicy1" class="link">
+        <span class="filter-item" data-filter='privacy'>
+            Privacy
+        </span>
+    </a>
+</div>
+
+<div class="container-posts">
+    <!-- Sidebar para Filtragem -->
+
+        <aside class="sidebar">
+            <div class="sidebar-title">
+                <h3>Filtros</h3>
+            </div>
+            <div class="filter-list">
+                <a asp-controller="Home" asp-action="Index" class="all-posts">
+                    <span b-9j61l8gp78="" class="material-icons-sharp">apps</span>
+                    <h3>Todos</h3>
+                </a>
+                @foreach (var year in Model.AvailableYears.Keys)
+                {
+                    <div class="year-filter">
+                        <div class="year-div" onclick="openSubMenu(this, this.querySelector('.material-icons-sharp'))">
+                            <h3 class="year">@year</h3>
+                            <span class="material-icons-sharp">chevron_right</span>
+                        </div>
+                        <div class="sub-menu-container">
+                            <div class="sub-menu">
+                                <a asp-controller="Home" asp-action="Index" asp-route-year="@year">
+                                    <span class="material-icons-sharp">chevron_right</span>
+                                    <h3>Todos</h3>
+                                </a>
+                            </div>
+
+                            @foreach (var month in Model.AvailableYears[year])
+                            {
+                                <div class="sub-menu">
+                                    <a asp-controller="Home" asp-action="Index" asp-route-year="@year" asp-route-month="@month">
+                                        <span class="material-icons-sharp">chevron_right</span>
+                                        <h3>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month)</h3>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </aside>
+    <div class="main-content">
+        <section class="list-post-container">
+        @foreach (var post in Model.Posts!)
+        {
+            <div class="post-box">
+                <!-- Image -->
+                @if (post.ThumbnailUrl == null)
+                {
+                    <img class="post-img" src="~/Thumbnails/default_image.png" />
+                }
+                else
+                {
+                    <img class="post-img" src="~/Thumbnails/Posts/@post.ThumbnailUrl" />
+                }
+                <!-- Content -->
+                <a class="post-title" asp-controller="Blog" asp-action="Post" asp-route-slug="@post.Slug">
+                    @post.Title
+                </a>
+
+                <span class="post-date">@post.CreatedDate.ToShortDateString()</span>
+                <p class="post-shortDescription">@post.ShortDescription</p>
+
+                    <div class="privacy-post">
+                        @if (post.IsPublic == false)
+                        {
+                            <span class="material-icons-sharp danger">
+                                lock
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="material-icons-sharp success">
+                                lock_open
+                            </span>
+                        }
+                    </div>
+
+                <!-- Profile -->
+                <div class="profile-rating">                  
+                    <div class="profile">
+                        @if (@post.ApplicationUser!.ProfilePictureUrl == null)
+                        {
+                            <img src="~/ProfilePictures/default.jpg" class="profile-img">
+                        }
+                        else
+                        {
+                            <img src="~/ProfilePictures/@post.ApplicationUser!.ProfilePictureUrl" class="profile-img">
+                        }
+                        
+                        <span class="profile-name">@post.ApplicationUser!.FirstName @post.ApplicationUser!.LastName</span>
+                    </div>
+                    <div class="ratingValueList">
+                        @if (@post.AverageRating == null)
+                        {
+                            <h3>?</h3>
+                            <span class="material-icons-sharp star filled">
+                                star
+                            </span>
+                        }
+                        else
+                        {
+                            <h3>@post.AverageRating</h3>
+                            <span class="material-icons-sharp star filled">
+                                star
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </section>  
+    </div>
+</div>

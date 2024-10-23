@@ -1,0 +1,41 @@
+﻿@model List<Projeto.ViewModels.RatingVM>
+
+@{
+    ViewData["Title"] = "List of Ratings";
+}
+
+<div class="return">
+    <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>Post</th>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Rated At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rating in Model)
+        {
+            <tr style="vertical-align: middle">
+                <td data-cell="Post" >@rating.PostId</td>
+                <td data-cell="User">@rating.UserName</td>
+                <td data-cell="Rating">
+                    <div class="rating-container">
+                        @rating.Value
+                        <span class="material-icons-sharp star filled">
+                            star
+                        </span>
+                    </div>
+                </td>
+                <td data-cell="Date" class="align-middle">@rating.RatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

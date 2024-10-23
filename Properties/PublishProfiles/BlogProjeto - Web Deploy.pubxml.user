@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOquYI6TmiUOeIViiarXNTwAAAAACAAAAAAAQZgAAAAEAACAAAAABn66Nws0oPYiqbXEG4GFz6Gx9/rSy1XSj9XJ9pS/k7gAAAAAOgAAAAAIAACAAAAB0ZqVueGebEmMEGh+VPFPeYqcHy7He2Mh+5KQx+NBYBoAAAAC40PSoLPMKRM+vrK84bdP2Nrc4HC3NVJQsexl0Ue9Iq09X81Djy8LM12VUmy1ISJBVPR1o1H6M4X6cVEYZtY9a1ROd72QtuH7KVXRB8Gdj/zofxNp0Lq9nw3Gip84wb76tVmYogYgaG9Y8MyTRnW/R3JApGIRrJA16wuLbVl82SUAAAADoYxXaKf5GVvZhuAbi4uMw5pfboOUrXZw1NnFI9woXacmWGMPWYAXzJYmvsYo2OyETS9dZvZoPBtQXiN0T1mYP</EncryptedPassword>
+    <History>False|2024-09-11T17:15:04.7956193Z||;False|2024-09-11T18:08:20.7173023+01:00||;False|2024-09-11T18:01:05.5022887+01:00||;False|2024-09-11T17:57:02.1229726+01:00||;False|2024-09-11T17:50:49.4524240+01:00||;True|2024-09-10T23:14:13.5702468+01:00||;False|2024-09-10T23:12:50.8040579+01:00||;True|2024-09-10T22:25:39.0860006+01:00||;True|2024-09-10T22:14:00.0892582+01:00||;True|2024-09-10T21:58:52.4560258+01:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=blogprojectdb.database.windows.net%3bInitial Catalog=Projeto_db%3bUser ID=RafaelCosta05%3bPassword=%2a%2a%2a%2a%2a%2a%2a%2a%3bConnect Timeout=30%3bEncrypt=True%3bTrust Server Certificate=False%3bApplication Intent=ReadWrite%3bMulti Subnet Failover=False</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Projeto.Data.ApplicationDbContext">
+      <Value>Data Source=blogprojectdb.database.windows.net%3bInitial Catalog=Projeto_db%3bUser ID=RafaelCosta05%3bPassword=%2a%2a%2a%2a%2a%2a%2a%2a%3bConnect Timeout=30%3bEncrypt=True%3bTrust Server Certificate=False%3bApplication Intent=ReadWrite%3bMulti Subnet Failover=False</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,215 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> _userManager;
+@inject RoleManager<IdentityRole> _roleManager;
+
+@{
+    var loggedInUser = new ApplicationUser();
+    loggedInUser = _userManager.Users?.FirstOrDefault(x => x.UserName == User.Identity!.Name);
+
+    var userRoles = new List<string>();
+    if (loggedInUser != null)
+    {
+        userRoles = await _userManager.GetRolesAsync(loggedInUser) as List<string>;
+    }
+
+    var role = userRoles?.FirstOrDefault();
+
+    var userRoleClass = "";
+
+    if (User.IsInRole("Admin"))
+    {
+        userRoleClass = "role-admin";
+    }
+    else if (User.IsInRole("Editor"))
+    {
+        userRoleClass = "role-editor";
+    }
+    else if (User.IsInRole("Author"))
+    {
+        userRoleClass = "role-author";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewData["Title"] - Projeto</title>
+
+    @if (userRoles!.Contains("Admin"))
+    {
+        <link href="~/sidebarImg/admin.png" rel="shortcut icon" />
+    }
+    else if (userRoles.Contains("Editor"))
+    {
+        <link href="~/sidebarImg/editor.png" rel="shortcut icon" />
+    }
+    else if (userRoles.Contains("Author"))
+    {
+        <link href="~/sidebarImg/author.png" rel="shortcut icon" />
+    }
+
+    <link href="~/Admin/css/StyleSheetNew.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+          rel="stylesheet">
+
+@*     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script> *@
+
+</head>
+<body>
+    <div class="container @userRoleClass">
+       <header class="header">
+                <a asp-area="Admin" asp-controller="Opening" asp-action="Index">
+                    <div class="logo">
+                        @if (userRoles!.Contains("Admin"))
+                        {
+                          
+                            <img src="~/sidebarImg/admin.png" />
+                            <h2><span class="success">Admin</span>Area</h2>
+                        }
+                        else if (userRoles.Contains("Editor"))
+                        {
+                            <img src="~/sidebarImg/editor.png" />
+                            <h2><span class="warning">Editor</span>Area</h2>
+                        }
+                        else if (userRoles.Contains("Author"))
+                        {
+                            <img src="~/sidebarImg/author.png" />
+                            <h2><span class="danger">Author</span>Area</h2>
+                        }
+                    </div>
+                </a>
+                <div class="right">
+                        <div class="info">
+                            <p>Olá, <b>@(loggedInUser?.FirstName) @(loggedInUser?.LastName)</b></p>
+                            <small>@role</small>
+                        </div>
+                        <div class="profile-photo" onclick="toggleDropdown()">
+                            <a asp-action="Edit" asp-controller="User" asp-area="Admin" asp-route-id="@loggedInUser?.Id">
+                                @if (loggedInUser?.ProfilePictureUrl == null)
+                                {
+                                    <img class="img-profile" src="~/ProfilePictures/default.jpg" alt="Foto de Perfil">
+                                }
+                                else
+                                {
+                                    <img class="img-profile" src="~/ProfilePictures/@(loggedInUser.ProfilePictureUrl)" alt="Foto de Perfil">
+                                }
+                            </a>
+                        </div>
+                <div class="open" onclick="sidebar()">
+                    <span class="material-icons-sharp">menu</span>
+                </div>
+                </div>
+       </header>
+
+            <div class="content">
+                <aside class="sidebar">
+                    <div class="min-sidebar-icon">
+                        <span class="material-icons-sharp" onclick="minSidebar()">chevron_left</span>
+                    </div>
+                    <a asp-area="Blog" asp-controller="Home" asp-action="Index">
+                        <span class="material-icons-sharp">apps</span>
+                        <h3>Blog</h3>
+                    </a>
+                        <a asp-action="Index" asp-controller="Post" asp-area="Admin">
+                            <span class="material-icons-sharp">post_add</span>
+                            <h3>Posts</h3>
+                        </a>
+                        <!-- ADMIN -->
+                        @if (userRoles.Contains("Admin"))
+                        {
+                            <a asp-action="Index" asp-controller="User" asp-area="Admin">
+                                <span class="material-icons-sharp">group</span>
+                                <h3>Utilizadores</h3>
+                            </a>
+                        }
+
+                        @if (userRoles.Contains("Admin") || userRoles.Contains("Editor"))
+                        {
+                            <a asp-area="Admin" asp-controller="Page" asp-action="About">
+                                <span class="material-icons-sharp">info</span>
+                                <h3>Sobre</h3>
+                            </a>
+                            <a asp-area="Admin" asp-controller="Page" asp-action="Contact">
+                                <span class="material-icons-sharp">contact_support</span>
+                                <h3>Contacto</h3>
+                            </a>
+                            <a asp-area="Admin" asp-controller="Page" asp-action="Privacy">
+                                <span class="material-icons-sharp">policy</span>
+                                <h3>Política de privacidade</h3>
+                            </a>
+                            <a asp-area="Admin" asp-controller="Setting" asp-action="Index">
+                                <span class="material-icons-sharp">settings</span>
+                                <h3>Settings</h3>
+                            </a>
+                        }
+                        <div class="theme-toggler">
+                            <span class="material-icons-sharp light-mode">light_mode</span>
+                            <h3>Tema</h3>
+                        </div>
+                        <a href="#" class="logout-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span class="material-icons-sharp">logout</span>
+                            <h3>Logout</h3>
+                        </a>
+                        <div id="close" class="close" onclick="sidebar()">
+                            <span class="material-icons-sharp">close</span>
+                        </div>
+                        <form id="logout-form" asp-action="Logout" asp-controller="User" asp-area="Admin" method="post" style="display:none;">
+                            <button type="submit"></button>
+                        </form>
+                </aside>
+                <div class="main-content">
+                    @RenderBody()
+                </div>
+            </div>
+            <div id="notyf-container"></div>
+        </div>
+        <!-- END OF MAIN -->
+        <!-- RIGHT SECTION TOP-->
+
+    <script src="~/Admin/js/index.js"></script>
+@*     <script src="~/Admin/js/close.js"></script> *@
+@*     <script src="~/Admin/js/ChooseFile.js"></script> *@
+@*     <script src="~/Admin/js/dropdownRegister.js"></script> *@
+    <script src="~/Admin/js/notf.js"></script>
+@*     <script src="~/Admin/js/clock.js"></script> *@
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+@*     <script src="https://cdn.tiny.cloud/1/bfjmo9uly4gsxiycpao6vjpzdkcgbhym6u4jbrm6znpbsqh0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> *@
+@*     <script src="~/Admin/js/TextArea.js"></script> *@
+
+@*     <script src="~/Admin/js/dropdownProfile.js"></script> *@
+
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("Notyf")
+
+    <script>
+        // const sideBar = document.querySelector('.sidebar');
+        const minIcon = document.querySelector('.min-sidebar-icon');
+        const mainContent = document.querySelector('.main-content');
+
+        function minSidebar() {
+            sideBar.classList.toggle('min-sidebar');
+
+            if (sideBar.classList.contains('min-sidebar')) {
+                minIcon.innerHTML = `<span class="material-icons-sharp" onclick="minSidebar()">chevron_right</span>`;
+                mainContent.classList.add('min-content');
+            } else {
+                minIcon.innerHTML = `<span class="material-icons-sharp" onclick="minSidebar()">chevron_left</span>`;
+                mainContent.classList.remove('min-content');
+            }
+        }
+
+    </script>
+</body>
+
+</html>

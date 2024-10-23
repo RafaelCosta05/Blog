@@ -1,0 +1,93 @@
+﻿@using Projeto.Data;
+@using Projeto.ViewModels
+
+@inject ApplicationDbContext _context;
+
+@{
+    var setting = _context.Settings!.ToList();
+    var vm = new SettingVM()
+            {
+                SiteName = setting[0].SiteName,
+                GithubUrl = setting[0].GithubUrl,
+                FacebookUrl = setting[0].FacebookUrl,
+                TwitterUrl = setting[0].TwitterUrl
+            };
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewData["Title"] - @vm.SiteName</title>
+    <link href="~/sidebarImg/admin.png" rel="shortcut icon" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+          rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link href="~/blog/css/StyleSheet.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Navigation-->
+    <header class="header">
+        <a asp-controller="Home" asp-action="Index" class="logo">Blog <span>Project</span></a>
+        <div class="right">
+@*             <div class="box">
+                <input type="checkbox" id="check" />
+                <div class="search-box">
+                    <input type="text" placeholder="Search here" />
+                    <label for="check" class="icon">
+                        <span class="material-icons-sharp">search</span>
+                    </label>
+                </div>
+            </div> *@
+            <div class="login-div">
+                <a class="login" asp-area="Admin" asp-controller="User" asp-action="Login">Login</a>
+            </div>
+            <div class="theme-toggler">
+                <span class="material-icons-sharp light-mode">light_mode</span>
+                <span class="material-icons-sharp dark-mode">dark_mode</span>
+            </div>
+@*                 <div class="second-color">
+                    <span class="material-icons-sharp color">contrast</span>
+                </div> *@
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content-->
+    @RenderBody()
+
+    <!-- Footer-->
+    <div class="footer container">
+        <p>Copyright &copy; @vm.SiteName 2024</p>
+        <div class="social">
+            <a href="@vm.TwitterUrl">
+                <i class='bx bxl-twitter'></i>
+            </a>
+            <a href="@vm.FacebookUrl">
+                <i class='bx bxl-facebook'></i>
+            </a>
+            <a href="@vm.GithubUrl">
+                <i class='bx bxl-github'></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="~/Admin/js/index.js"></script>
+    <script src="~/blog/js/scripts.js"></script>
+    <script src="~/blog/js/setColor.js"></script>
+
+    @* NOTIFICATIONS *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @await Component.InvokeAsync("Notyf")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

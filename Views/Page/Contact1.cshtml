@@ -1,0 +1,52 @@
+﻿@model Projeto.ViewModels.PageVM
+
+@{
+    ViewData["Title"] = "Contact";
+
+    string pageThumbnail = "";
+
+    // if (Model.ThumbnailUrl == null)
+    // {
+    //     pageThumbnail = "/blog/assets/img/contact-bg.jpg";
+    // }
+    // else
+    // {
+    //     pageThumbnail = "/Thumbnails/Page/Contact" + Model.ThumbnailUrl;
+    // }
+
+    pageThumbnail = "/Thumbnails/Page/Contact" + Model.ThumbnailUrl;
+}
+
+<section class="home" id="home" style="background-image: url('@pageThumbnail')">
+    <div class="home-text container">
+        <h2 class="home-title">@Model.Title</h2>
+        <span class="home-subtitle">@Model.ShortDescription</span>
+    </div>
+</section>
+
+<div class="pages-filter container">
+    <a asp-controller="Home" asp-action="Index" class="link">
+        <span class="filter-item" data-filter='posts'>
+            Posts
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="About1" class="link">
+        <span class="filter-item" data-filter='about'>
+            About
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="Contact1" class="link">
+        <span class="filter-item active-filter" data-filter='contact'>
+            Contact
+        </span>
+    </a>
+    <a asp-controller="Page" asp-action="PrivacyPolicy1" class="link">
+        <span class="filter-item" data-filter='privacy'>
+            Privacy
+        </span>
+    </a>
+</div>
+
+<div class="description container">
+    @Html.Raw(Model.Description)
+</div>

@@ -1,0 +1,40 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2024-09-11T17:14:00.9566611Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "9f0742d6-efc6-4b9a-b63c-480729fa712c"
+    },
+    "BlogProjeto.subscriptionId": {
+      "Name": "BlogProjeto.subscriptionId",
+      "Type": "subscription",
+      "Value": "9f0742d6-efc6-4b9a-b63c-480729fa712c"
+    },
+    "BlogProjeto.resourceName": {
+      "Name": "BlogProjeto.resourceName",
+      "Type": null,
+      "Value": "BlogProjeto"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "NetworkWatcherRG"
+    },
+    "BlogProjeto.resourceGroupName": {
+      "Name": "BlogProjeto.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "NetworkWatcherRG"
+    },
+    "BlogProjeto.resourceGroupLocation": {
+      "Name": "BlogProjeto.resourceGroupLocation",
+      "Type": null,
+      "Value": "swedencentral"
+    }
+  }
+}

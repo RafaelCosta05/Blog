@@ -1,0 +1,40 @@
+﻿@model Projeto.ViewModels.LoginVM
+
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Login";
+}
+
+<div class="card-login">
+    <form method="post" asp-action="Login">
+        <div class="form-container">
+                    <div class="title">
+                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-for="Username" type="text" class="form-control form-control-user"
+                               id="exampleInputEmail" aria-describedby="emailHelp"
+                               placeholder="Enter Username...">
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Password" type="password" class="form-control form-control-user"
+                               id="exampleInputPassword" placeholder="Password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        @* REMEMBER *@
+                    </div>
+                    <input type="submit" class="btn btn-info btn-user btn-block" value="Login">
+
+                    <hr>
+                    <div class="forgot">
+                        <a class="small" asp-action="ForgotPassword" asp-controller="User">Forgot Password?</a>
+                    </div>
+                    <div class="create">
+                        <a class="small" asp-action="CreateAccount" asp-controller="User">Create an Account!</a>
+                    </div>
+                    </div>
+        </form>
+    </div>
