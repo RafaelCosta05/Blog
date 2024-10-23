@@ -161,7 +161,6 @@ section {
     display: flex;
     align-items: center;
     gap: 2rem;
-    width: 92%;
     justify-content: end;
 }
 
@@ -171,8 +170,6 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
-/*        height: 1.6rem;
-        width: 4.2rem;*/
         cursor: pointer;
         border-radius: var(--border-radius-1);
     }
@@ -223,6 +220,7 @@ section {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-dark);
+    width: 154px;
 }
 
 .logo span {
@@ -251,14 +249,19 @@ section {
     width: 100%;
     min-height: 440px;
     background: var(--color-white);
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .home-text {
     color: var(--color-dark);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .home-title {
@@ -268,6 +271,61 @@ section {
 .home-subtitle {
     font-size: 1rem;
     font-weight: 400;
+}
+
+/* =============================
+   SEARCH BAR
+   ============================= */
+
+.box {
+    max-width: 400px;
+    width: 100%;
+}
+
+    .box .search-box {
+        position: relative;
+        height: 50px;
+        max-width: 40px;
+        margin: auto;
+        box-shadow: 0 5px 10px var(--color-light);
+        border-radius: 25px;
+        margin-bottom: 11px;
+        transition: all ease 300ms;
+    }
+
+#check:checked ~ .search-box {
+    max-width: 380px;
+}
+
+.search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    background: var(--color-background);
+    color: var(--color-dark);
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    font-family: 'poppins', sans-serif;
+}
+
+.search-box .icon {
+    position: absolute;
+    right: -7px;
+    top: 0;
+    width: 50px;
+    background: var(--color-success);
+    height: 100%;
+    text-align: center;
+    line-height: 55px;
+    border-radius: 25px;
+    font-size: 25px;
+}
+
+#check:checked ~ .search-box .icon {
+    border-radius: 0 25px 25px 0;
 }
 
 /* =============================
@@ -844,6 +902,9 @@ a.post-title {
         padding: 2rem 1rem 2rem 1rem;
         gap: 5rem;
     }
+    .right {
+        width: 30%;
+    }
 }
 
     @media (max-width: 396px) {
@@ -893,60 +954,3 @@ a.post-title {
             margin-left: 1rem;
         }
     }
-
-
-/* =============================
-   SEARCH BAR
-   ============================= */
-
-.box {
-    max-width: 400px;
-    width: 100%;
-}
-
-    .box .search-box {
-        position: relative;
-        height: 50px;
-        max-width: 50px;
-        margin: auto;
-        box-shadow: 0 5px 10px var(--color-light);
-        border-radius: 25px;
-        margin-bottom: 11px;
-        transition: all ease 300ms;
-    }
-
-    #check:checked ~ .search-box {
-        max-width: 380px;
-    }
-
-.search-box input {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    border-radius: 25px;
-    background: var(--color-background);
-    color: var(--color-dark);
-    outline: none;
-    border: none;
-    padding-left: 20px;
-    font-size: 0.9rem;
-}
-
-.search-box .icon {
-    position: absolute;
-    right: -7px;
-    top: 0;
-    width: 50px;
-    background: var(--color-background);
-    height: 100%;
-    text-align: center;
-    line-height: 55px;
-    border-radius: 25px;
-    font-size: 25px;
-}
-
-#check:checked ~ .search-box .icon {
-/*    background: var(--color-light);*/
-/*    color: var(--color-background);*/
-    border-radius: 0 25px 25px 0;
-}

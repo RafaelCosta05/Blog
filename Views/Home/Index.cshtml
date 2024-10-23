@@ -22,12 +22,21 @@
         <h2 class="home-title">@Model.Title</h2>
         <span class="home-subtitle">@Model.ShortDescription</span>
     </div>
+    <div class="box">
+        <input type="checkbox" id="check" />
+        <div class="search-box">
+            <input type="text" placeholder="Search here" />
+            <label for="check" class="icon">
+                <span class="material-icons-sharp">search</span>
+            </label>
+        </div>
+    </div>
 </section>
 
 <div class="pages-filter container">
     <div class="menu-icon">
         <span b-9j61l8gp78="" class="material-icons-sharp"
-              onclick="openSidebar()">menu</span>
+              onclick="openSidebar()">tune</span>
     </div>
     <a asp-controller="Home" asp-action="Index" class="link">
         <span class="filter-item active-filter" data-filter='posts'>
