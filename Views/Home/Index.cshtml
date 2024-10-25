@@ -25,7 +25,7 @@
     <div class="box">
         <input type="checkbox" id="check" />
         <div class="search-box">
-            <input type="text" placeholder="Search here" />
+            <input type="text" placeholder="Search here" id="searchInput" oninput="filterPosts()" />
             <label for="check" class="icon">
                 <span class="material-icons-sharp">search</span>
             </label>
@@ -174,3 +174,23 @@
     </section>  
     </div>
 </div>
+
+<script>
+    function filterPosts() {
+        const searchInput = document.getElementById('searchInput');
+        const filter = searchInput.value.toLowerCase();
+        const postBoxes = document.querySelectorAll('.post-box'); // Seleciona todos os posts
+
+        postBoxes.forEach(post => {
+            const title = post.querySelector('.post-title').textContent.toLowerCase();
+
+            // Verifica se o título contém o termo de busca
+            if (title.includes(filter)) {
+                post.style.display = ''; // Mostra o post
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    }
+
+</script>
