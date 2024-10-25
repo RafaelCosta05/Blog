@@ -2,56 +2,53 @@
 @{
     ViewData["Title"] = "Users";
 }
-                <div class="actions">
-                    <a asp-action="Register" asp-controller="User">
-                        <div class="add-user">
-                            <span class="material-icons-sharp">add</span>
-                            <h3>Add User</h3>
-                        </div>
-                    </a>
-                </div>    
 
-        <h2>Lista de Utilizadores</h2>
+<div class="actions">
+    <a asp-action="Register" asp-controller="User">
+        <div class="add-user">
+            <span class="material-icons-sharp">add</span>
+            <h3>Add User</h3>
+        </div>
+    </a>
+</div>    
 
-            <table class="table" id="myTable">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>UserName</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach(var user in Model)
-                    {
-                        <tr style="vertical-align: middle">
-                            <td data-cell="First Name" class="align-middle">@user.FirstName</td>
-                            <td data-cell="Last Name" class="align-middle">@user.LastName</td>
-                            <td data-cell="UserName" class="align-middle">@user.UserName</td>
-                            <td data-cell="Email" class="align-middle">@user.Email</td>
-                            <td data-cell="Contact"  class="align-middle">@user.PhoneNumber</td>
-                            <td data-cell="Role" class="align-middle">
-                                @if (user.Role == "Admin")
-                                { 
-                                    <span class="admin">@user.Role</span>
-                                }
-                                @if (user.Role == "Editor")
-                                {
-                                    <span class="editor">@user.Role</span>
-                                }
-                                @if (user.Role == "Author")
-                                {
-                                    <span class="author">@user.Role</span>
-                                }   
-                            </td>
-                            <td data-cell="Actions" class="align-middle">
-                                <a class="btn btn-info" asp-action="ResetPassword" asp-controller="User" asp-route-id="@user.Id">Reset Password</a>
-                            </td>
-                        </tr>
+<h2>Lista de Utilizadores</h2>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>UserName</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach(var user in Model) {
+            <tr>
+                <td data-cell="First Name">@user.FirstName</td>
+                <td data-cell="Last Name">@user.LastName</td>
+                <td data-cell="UserName">@user.UserName</td>
+                <td data-cell="Email">@user.Email</td>
+                <td data-cell="Contact">@user.PhoneNumber</td>
+                <td data-cell="Role">
+                    @if (user.Role == "Admin") { 
+                        <span class="admin">@user.Role</span>
                     }
-                </tbody>
-            </table>
+                    @if (user.Role == "Editor") {
+                        <span class="editor">@user.Role</span>
+                    }
+                    @if (user.Role == "Author") {
+                        <span class="author">@user.Role</span>
+                    }   
+                </td>
+                <td data-cell="Actions">
+                    <a asp-action="ResetPassword" asp-controller="User" asp-route-id="@user.Id">Reset Password</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

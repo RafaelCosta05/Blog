@@ -5,15 +5,6 @@
 
     string thumbnail = "";
 
-    // if (Model.ThumbnailUrl == null)
-    // {
-    //     thumbnail = "blog/assets/img/home-bg.jpg";
-    // }
-    // else
-    // {
-    //     thumbnail = "/Thumbnails/Page/Home" + Model.ThumbnailUrl;
-    // }
-
     thumbnail = "/Thumbnails/Page/Home" + Model.ThumbnailUrl;
 }
 
@@ -103,8 +94,7 @@
         </aside>
     <div class="main-content">
         <section class="list-post-container">
-        @foreach (var post in Model.Posts!)
-        {
+        @foreach (var post in Model.Posts!) {
             <div class="post-box">
                 <!-- Image -->
                 @if (post.ThumbnailUrl == null)
@@ -175,22 +165,4 @@
     </div>
 </div>
 
-<script>
-    function filterPosts() {
-        const searchInput = document.getElementById('searchInput');
-        const filter = searchInput.value.toLowerCase();
-        const postBoxes = document.querySelectorAll('.post-box'); // Seleciona todos os posts
-
-        postBoxes.forEach(post => {
-            const title = post.querySelector('.post-title').textContent.toLowerCase();
-
-            // Verifica se o título contém o termo de busca
-            if (title.includes(filter)) {
-                post.style.display = ''; // Mostra o post
-            } else {
-                post.style.display = 'none';
-            }
-        });
-    }
-
-</script>
+<script src="~/blog/js/index.js"></script>

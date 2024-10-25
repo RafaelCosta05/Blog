@@ -65,31 +65,25 @@
             </div>
 
             <div class="right-column">
-                <div class="form-group">
-                    @if (Model?.ProfilePictureUrl == null)
-                    {
-                        <img class="profile-photo-form" src="~/ProfilePictures/default.jpg" alt="Foto de Perfil">
-                    }
-                    else
-                    {
-                        <img class="profile-photo-form" src="~/ProfilePictures/@(Model.ProfilePictureUrl)" alt="Foto de Perfil">
-                    }
-                </div>
-                <label class="label-form">Profile Picture</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" asp-for="ProfilePicture" class="custom-file-input" id="picture" />
-                        <label class="custom-file-label">Choose file</label>
-                        <span asp-validation-for="ProfilePicture" class="text-bg-danger"></span>
+                <div class="form-row-right">
+                    <div class="form-group">
+                        <img class="profile-photo-form" src="@profilePicture" alt="Foto de Perfil">
+                    </div>
+                    <div class="form-group">
+                        <label class="label-form">Foto de Perfil</label>
+                        <div class="custom-file">
+                            <input type="file" asp-for="ProfilePicture" class="custom-file-input" id="picture" />
+                            <label class="custom-file-label">Choose file</label>
+                            <span asp-validation-for="ProfilePicture" class="text-bg-danger"></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="mb-2 mt-3">
-            <button type="submit" class="submit-user">Create User</button>
+        <div class="btn">
+            <button type="submit" class="submit-user">Editar Perfil</button>
         </div>
     </form>
-
 </div>
-<script src="~/Admin/js/dropdownRegister.js"></script>
+
 <script src="~/Admin/js/ChooseFile.js"></script>

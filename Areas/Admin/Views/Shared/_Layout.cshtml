@@ -56,12 +56,9 @@
         <link href="~/sidebarImg/author.png" rel="shortcut icon" />
     }
 
-    <link href="~/Admin/css/StyleSheetNew.css" rel="stylesheet" />
+    <link href="~/Admin/css/StyleSheet.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
           rel="stylesheet">
-
-@*     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script> *@
 
 </head>
 <body>
@@ -90,7 +87,18 @@
                 <div class="right">
                         <div class="info">
                             <p>Olá, <b>@(loggedInUser?.FirstName) @(loggedInUser?.LastName)</b></p>
-                            <small>@role</small>
+                            @if (userRoles!.Contains("Admin"))
+                            {
+                                <small class="success">@role</small>
+                            }
+                            else if (userRoles.Contains("Editor"))
+                            {
+                                <small class="warning">@role</small>
+                            }
+                            else if (userRoles.Contains("Author"))
+                            {
+                                <small class="danger">@role</small>
+                            }
                         </div>
                         <div class="profile-photo" onclick="toggleDropdown()">
                             <a asp-action="Edit" asp-controller="User" asp-area="Admin" asp-route-id="@loggedInUser?.Id">
@@ -159,9 +167,6 @@
                             <span class="material-icons-sharp">logout</span>
                             <h3>Logout</h3>
                         </a>
-                        <div id="close" class="close" onclick="sidebar()">
-                            <span class="material-icons-sharp">close</span>
-                        </div>
                         <form id="logout-form" asp-action="Logout" asp-controller="User" asp-area="Admin" method="post" style="display:none;">
                             <button type="submit"></button>
                         </form>
@@ -175,41 +180,18 @@
         <!-- END OF MAIN -->
         <!-- RIGHT SECTION TOP-->
 
-    <script src="~/Admin/js/index.js"></script>
-@*     <script src="~/Admin/js/close.js"></script> *@
-@*     <script src="~/Admin/js/ChooseFile.js"></script> *@
-@*     <script src="~/Admin/js/dropdownRegister.js"></script> *@
-    <script src="~/Admin/js/notf.js"></script>
-@*     <script src="~/Admin/js/clock.js"></script> *@
+    <script src="~/Admin/js/index.js"></script>    
+    <script src="~/Admin/js/SideBar.js"></script>
+    
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 @*     <script src="https://cdn.tiny.cloud/1/bfjmo9uly4gsxiycpao6vjpzdkcgbhym6u4jbrm6znpbsqh0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script> *@
-@*     <script src="~/Admin/js/TextArea.js"></script> *@
-
-@*     <script src="~/Admin/js/dropdownProfile.js"></script> *@
 
     @await RenderSectionAsync("Scripts", required: false)
     @await Component.InvokeAsync("Notyf")
 
-    <script>
-        // const sideBar = document.querySelector('.sidebar');
-        const minIcon = document.querySelector('.min-sidebar-icon');
-        const mainContent = document.querySelector('.main-content');
-
-        function minSidebar() {
-            sideBar.classList.toggle('min-sidebar');
-
-            if (sideBar.classList.contains('min-sidebar')) {
-                minIcon.innerHTML = `<span class="material-icons-sharp" onclick="minSidebar()">chevron_right</span>`;
-                mainContent.classList.add('min-content');
-            } else {
-                minIcon.innerHTML = `<span class="material-icons-sharp" onclick="minSidebar()">chevron_left</span>`;
-                mainContent.classList.remove('min-content');
-            }
-        }
-
-    </script>
+    
 </body>
 
 </html>

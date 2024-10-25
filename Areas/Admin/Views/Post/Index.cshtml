@@ -4,65 +4,61 @@
 }
 
 <div class="list-of-posts">
-        <div class="actions">
-            <a asp-action="Create" asp-controller="Post" asp-area="Admin" class="a-create">
-                <div class="add-post">
-                    <span class="material-icons-sharp">add</span>
-                    <h3>Add Post</h3>
-                </div>
-            </a>
+    <div class="actions">
+        <a asp-action="Create" asp-controller="Post" asp-area="Admin" class="a-create">
+            <div class="add-post">
+                <span class="material-icons-sharp">add</span>
+                <h3>Add Post</h3>
+            </div>
+        </a>
         <a asp-action="Index" asp-controller="Rating" asp-area="Admin" class="a-ratings">
-                <div class="ratings">
-                    <span class="material-icons-sharp">star_half</span>
-                    <h3>Ratings</h3>
-                </div>
-            </a>
-        </div>
+            <div class="ratings">
+                <span class="material-icons-sharp">star_half</span>
+                <h3>Ratings</h3>
+            </div>
+        </a>
+    </div>
     <h2>Lista de Posts</h2>
     <div class="posts">    
-            @foreach(var post in Model)
-            {
-                <div class="card">
-                    <div class="thumbnail">
-                        @if(post.ThumbnailUrl == null) {
-                            <img class="img-fluid" src="~/Thumbnails/default_image.png" />
+        @foreach(var post in Model) {
+            <div class="card">
+                <div class="thumbnail">
+                    @if(post.ThumbnailUrl == null) {
+                        <img class="img-fluid" src="~/Thumbnails/default_image.png" />
+                    } else {
+                        <img class="img-fluid" src="~/Thumbnails/Posts/@post.ThumbnailUrl" />
+                    }
+                </div>                      
+                <div class="info-post">
+                    <div class="title-privacy">
+                        <h4>@post.Title</h4>
+                        @if (post.IsPublic == false) {
+                            <span class="material-icons-sharp danger" title="Post Privado">
+                                lock
+                            </span>
                         } else {
-                            <img class="img-fluid" src="~/Thumbnails/Posts/@post.ThumbnailUrl" />
+                            <span class="material-icons-sharp success" title="Post Público">
+                                lock_open
+                            </span>
                         }
-                    </div>                      
-                    <div class="info-post">
-                        <div class="title-privacy">
-                            <h4>@post.Title</h4>
-                                @if (post.IsPublic == false)
-                                {
-                                    <span class="material-icons-sharp danger" title="Post Privado">
-                                        lock
-                                    </span>
-                                }
-                                else
-                                {
-                                    <span class="material-icons-sharp success" title="Post Público">
-                                        lock_open
-                                    </span>
-                                }
-                        </div>
-
-                        <h5>@post.AuthorName</h5>
-                        <p>@post.CreatedDate</p>
                     </div>
-                    <div class="buttons-post">
-                        <form asp-area="Admin" asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id" method="get">
-                            <button type="submit" class="button-edit">
-                                <span class="material-icons-sharp">visibility</span>
-                            </button>
-                        </form>
-                        <form asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" method="post" onsubmit="return confirm('Pretende eliminar este post?')">
-                            <button type="submit" class="button-delete">
-                                    <span class="material-icons-sharp">delete</span>
-                            </button>
-                        </form>                         
-                    </div>   
+
+                    <h5>@post.AuthorName</h5>
+                    <p>@post.CreatedDate</p>
                 </div>
-            }
+                <div class="buttons-post">
+                    <form asp-area="Admin" asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id" method="get" class="btn-actions-post">
+                        <button type="submit" class="button-edit">
+                            <span class="material-icons-sharp">visibility</span>
+                        </button>
+                    </form>
+                    <form asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" method="post" class="btn-actions-post" onsubmit="return confirm('Pretende eliminar este post?')">
+                        <button type="submit" class="button-delete">
+                            <span class="material-icons-sharp">delete</span>
+                        </button>
+                    </form>                         
+                </div>   
+            </div>
+        }
     </div>
 </div>

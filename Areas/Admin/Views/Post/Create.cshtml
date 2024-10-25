@@ -26,7 +26,6 @@
 <div class="card-about">
     <form asp-action="Create" asp-controller="Post" asp-area="Admin" enctype="multipart/form-data">
         <div class="form-container">
-            <!-- Coluna esquerda para os inputs -->
             <div class="left-column">
                 <div class="form-group">
                     <label class="top-label-form">Title</label>
@@ -57,8 +56,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Coluna direita para upload de arquivos e pré-visualização -->
             <div class="right-column">
                 <div class="form-group">
                     <img id="thumbnailPreview" src="@Thumbnail" class="img-chooseFile" />
@@ -72,11 +69,10 @@
                 <span asp-validation-for="Thumbnail" class="text-danger"></span>
             </div>
         </div>
-
-        <!-- Botão de envio -->
         <div class="mb-2 mt-3 text-right">
             <button type="submit" class="submit-post">Save</button>
         </div>
     </form>
 </div>
+
 <script src="~/Admin/js/ChooseFile.js"></script>

@@ -29,13 +29,3 @@ const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     setTheme(savedTheme);
 }
-
-
-const sideBar = document.querySelector('.sidebar');
-const closeBtn = document.getElementById('close');
-
-
-function sidebar() {
-    sideBar.classList.toggle('active');
-    
-}

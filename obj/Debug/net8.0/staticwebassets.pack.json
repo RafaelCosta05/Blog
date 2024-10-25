@@ -5,20 +5,12 @@
       "PackagePath": "staticwebassets\\Projeto.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheet.css",
+      "PackagePath": "staticwebassets\\Admin\\css\\StyleSheet.css"
+    },
+    {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheetLogin.css",
       "PackagePath": "staticwebassets\\Admin\\css\\StyleSheetLogin.css"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheetNew.css",
-      "PackagePath": "staticwebassets\\Admin\\css\\StyleSheetNew.css"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheetNotf.css",
-      "PackagePath": "staticwebassets\\Admin\\css\\StyleSheetNotf.css"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\.js",
-      "PackagePath": "staticwebassets\\Admin\\js\\.js"
     },
     {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\ChooseFile.js",
@@ -29,16 +21,12 @@
       "PackagePath": "staticwebassets\\Admin\\js\\ImageEdit.js"
     },
     {
+      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\SideBar.js",
+      "PackagePath": "staticwebassets\\Admin\\js\\SideBar.js"
+    },
+    {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\clock.js",
       "PackagePath": "staticwebassets\\Admin\\js\\clock.js"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\close.js",
-      "PackagePath": "staticwebassets\\Admin\\js\\close.js"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\dropdownProfile.js",
-      "PackagePath": "staticwebassets\\Admin\\js\\dropdownProfile.js"
     },
     {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\dropdownRegister.js",
@@ -47,14 +35,6 @@
     {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\index.js",
       "PackagePath": "staticwebassets\\Admin\\js\\index.js"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\login.js",
-      "PackagePath": "staticwebassets\\Admin\\js\\login.js"
-    },
-    {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\notf.js",
-      "PackagePath": "staticwebassets\\Admin\\js\\notf.js"
     },
     {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\scss\\_buttons.scss",
@@ -7621,12 +7601,12 @@
       "PackagePath": "staticwebassets\\blog\\css\\StyleSheet.css"
     },
     {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\scripts.js",
-      "PackagePath": "staticwebassets\\blog\\js\\scripts.js"
+      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\index.js",
+      "PackagePath": "staticwebassets\\blog\\js\\index.js"
     },
     {
-      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\setColor.js",
-      "PackagePath": "staticwebassets\\blog\\js\\setColor.js"
+      "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\script.js",
+      "PackagePath": "staticwebassets\\blog\\js\\script.js"
     },
     {
       "Id": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\lib\\bootstrap\\LICENSE",
