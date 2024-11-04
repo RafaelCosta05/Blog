@@ -52,17 +52,47 @@
 
     <!-- Footer-->
     <div class="footer container">
-        <p>Copyright &copy; @vm.SiteName 2024</p>
-        <div class="social">
-            <a href="@vm.TwitterUrl">
-                <i class='bx bxl-twitter'></i>
+        <div class="pages">
+            <p>@vm.SiteName 2024</p>
+            <div class="links-pages-footer">
+            <a asp-controller="Page" asp-action="About1" class="link">
+                <span class="filter-item" data-filter='about'>
+                    About
+                </span>
             </a>
-            <a href="@vm.FacebookUrl">
-                <i class='bx bxl-facebook'></i>
+            <a asp-controller="Page" asp-action="Contact1" class="link">
+                <span class="filter-item" data-filter='contact'>
+                    Contact
+                </span>
             </a>
-            <a href="@vm.GithubUrl">
-                <i class='bx bxl-github'></i>
+            <a asp-controller="Page" asp-action="PrivacyPolicy1" class="link">
+                <span class="filter-item" data-filter='privacy'>
+                    Privacy
+                </span>
             </a>
+            </div>
+        </div>
+        <div class="social">                
+            <p>Follow Us</p>
+            <div class="links-social-footer">
+                <a href="@vm.TwitterUrl">
+                    <i class='bx bxl-twitter'></i>
+                </a>
+                <a href="@vm.FacebookUrl">
+                    <i class='bx bxl-facebook'></i>
+                </a>
+                <a href="@vm.GithubUrl">
+                    <i class='bx bxl-github'></i>
+                </a>
+            </div>
+        </div>
+        <div class="code">
+            <p>Code</p>
+            <div class="links-code-footer">
+                <i class='bx bxl-html5'></i>
+                <i class='bx bxl-javascript'></i>
+                <i class='bx bxl-css3'></i>            
+            </div>
         </div>
     </div>
 

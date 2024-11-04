@@ -1,14 +1,22 @@
 const menuIcon = document.querySelector('.menu-icon');
 const subMenu = document.querySelector('.sub-menu');
-const sideBar = document.querySelector('.sidebar')
-
+const sideBar = document.querySelector('.sidebar');
+const backdrop = document.querySelector('.backdrop');
+const closeSideBar = document.querySelector('.close-sidebar-icon');
 
 function openSidebar() {
     sideBar.classList.toggle('active');
+    backdrop.classList.toggle('active');
 }
 
+backdrop.addEventListener('click', openSidebar);
+
+closeSideBar.addEventListener('click', () => {
+    sideBar.classList.toggle('active');
+    backdrop.classList.toggle('active');
+})
+
 function openSubMenu(element, iconSpan) {
-    // Busca o container do submenu dentro da div pai do elemento clicado (h3)
     const subMenuContainer = element.parentElement.querySelector('.sub-menu-container');
 
     if (subMenuContainer) {
