@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZqQo1+NJYxsCwVzMJ9bSl3UmsNZz+hNP/PDvSIquyqM=",
+  "Hash": "dZiKddbXNRDp2V3VHBVSh4zPmJFJgAFvXlLGEJAKfiQ=",
   "Source": "Projeto",
   "BasePath": "_content/Projeto",
   "Mode": "Default",
@@ -36438,6 +36438,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\blog\\js\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\rating.js",
+      "SourceId": "Projeto",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\",
+      "BasePath": "_content/Projeto",
+      "RelativePath": "blog/js/rating.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\blog\\js\\rating.js"
     },
     {
       "Identity": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\js\\script.js",

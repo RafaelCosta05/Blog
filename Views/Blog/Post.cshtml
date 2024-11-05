@@ -15,7 +15,9 @@
     // } 
 }
 
-<section class="post-header">
+<div class="post-details">
+
+<div class="post-header">
     <div class="header-content post-container">
         @* <span class="material-icons-sharp">arrow_back</span> *@
         <a asp-area="Blog" asp-controller="Home" asp-action="Index">
@@ -31,20 +33,20 @@
             <img class="header-img" src="~/Thumbnails/Posts/@Model.ThumbnailUrl" />
         }
     </div>
-</section>
+</div>
 
-<section class="post-content post-container">
+<div class="post-content post-container">
     <h2 class="sub-heading">@Model.shortDescription</h2>
     <p class="post-text">@Html.Raw(Model.Description) </p>
-</section>
+</div>
 
-<div class="ratingValue">
+<div class="ratingValue post-container">
     <h3>Classificação: @Model.AverageRating</h3>
 </div>
 
 @if (User.Identity!.IsAuthenticated)
 {
-    <form asp-action="Post" method="post" class="post-form">
+    <form asp-action="Post" method="post" class="post-form post-container">
         <div class="rating">
             @for (int i = 1; i <= 5; i++)
             {
@@ -72,7 +74,7 @@ else
 
 <div class="share post-container">
     <span class="share-title">Partilha este artigo</span>
-    <div class="social">
+    <div class="social post-social">
         <a href="#">
             <i class='bx bxl-twitter'></i>
         </a>
@@ -86,20 +88,6 @@ else
 </div>
 
 
-<script>
-    function setRating(value) {
-        // Define o valor do rating no campo oculto
-        document.getElementById('RatingValue').value = value;
+</div>
 
-        // Remove a classe "filled" de todas as estrelas
-        var stars = document.querySelectorAll('.star');
-        stars.forEach(star => {
-            star.classList.remove('filled');
-        });
-
-        // Adiciona a classe "filled" às estrelas até o valor clicado
-        for (let i = 1; i <= value; i++) {
-            stars[i - 1].classList.add('filled');
-        }
-    }
-</script>
+<script src="~/blog/js/rating.js"></script>
