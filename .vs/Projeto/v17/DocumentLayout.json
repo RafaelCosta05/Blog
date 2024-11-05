@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\wwwroot\\admin\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:wwwroot\\admin\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\wwwroot\\blog\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:wwwroot\\blog\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\areas\\admin\\views\\post\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:areas\\admin\\views\\post\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\areas\\admin\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:areas\\admin\\controllers\\postcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PostController.cs",
-              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Controllers\\PostController.cs",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\PostController.cs",
-              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Controllers\\PostController.cs",
-              "RelativeToolTip": "Areas\\Admin\\Controllers\\PostController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAACUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T19:46:06.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\Post\\Index.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Post\\Index.cshtml",
-              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\Post\\Index.cshtml",
-              "RelativeToolTip": "Areas\\Admin\\Views\\Post\\Index.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADkAAAAkAAAA",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFcAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-05T18:32:49.368Z",
+              "WhenOpened": "2024-11-05T22:38:20.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "StyleSheet.css",
-              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheet.css",
-              "RelativeDocumentMoniker": "wwwroot\\Admin\\css\\StyleSheet.css",
-              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheet.css",
-              "RelativeToolTip": "wwwroot\\Admin\\css\\StyleSheet.css",
-              "ViewState": "AQIAAA0DAAAAAAAAAAAowB0DAAAeAAAA",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\css\\StyleSheet.css",
+              "RelativeDocumentMoniker": "wwwroot\\blog\\css\\StyleSheet.css",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\css\\StyleSheet.css",
+              "RelativeToolTip": "wwwroot\\blog\\css\\StyleSheet.css",
+              "ViewState": "AQIAABMEAAAAAAAAAAAAACUEAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-05T18:26:02.044Z",
+              "WhenOpened": "2024-11-05T22:18:28.744Z",
               "EditorCaption": ""
             }
           ]

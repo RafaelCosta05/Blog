@@ -19,7 +19,7 @@
     --border-radius-2: 1.2rem;
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--color-light);
+    --box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode-variables {
@@ -28,7 +28,6 @@
     --color-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
-    --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
 .set-color {
@@ -101,7 +100,7 @@ a {
 section {
     padding: 2rem 0 2rem;
     position: relative;
-/*    box-shadow: var(--box-shadow);*/
+    box-shadow: var(--box-shadow);
 }
 
     #home::after {
@@ -375,50 +374,73 @@ section {
    ============================= */
 
 .container-posts {
-    max-width: 1800px;
-    margin: auto;
+/*    max-width: 1800px;*/
+/*    margin: auto;*/
     width: 100%;
     display: flex;
+    margin-top: 2rem;
 }
 
-.sidebar {
-    background: var(--color-white);
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    width: 0;
-    height: 85vh;
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius-2);
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-100%);
-    transition: all ease 400ms;
+    transition: opacity 400ms ease;
+    z-index: 999;
 }
 
-    .sidebar.active {
-        width: 220px;
-        margin-right: 1.5rem;
+    .backdrop.active {
+        opacity: unset;
+        visibility: unset;
+    }
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    visibility: hidden;
+    background: var(--color-white);
+    transform: translateX(-100%);
+    transition: all ease 400ms;
+    z-index: 1000;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-success) transparent;
+}
+
+     .sidebar.active {
+        width: 250px;
         opacity: 1;
         visibility: visible;
         transform: translateX(0);
     }
 
-    .sidebar .close-sidebar-icon {
+    /*.sidebar .close-sidebar-icon {
         display: flex;
         justify-content: flex-end;
         align-items: center;
         color: var(--color-dark);
-        position: relative;
-        left: 83px;
-    }
+        right: -20px;
+        position: absolute;*/
+/*        z-index: 1010;*/
+    /*}
 
         .sidebar .close-sidebar-icon span {
             background: var(--color-success);
             border-radius: 50%;
             font-size: 1.6rem;
-            transition: all ease 300ms
-        }
+            transition: all ease 300ms;
+        }*/
 
 .sidebar-title {
     display: flex;
@@ -466,7 +488,7 @@ section {
         }
 
         .sidebar a:hover {
-            color: var(--color-primary);
+            color: var(--color-success);
         }
 
             .sidebar a:hover span {
@@ -538,7 +560,7 @@ section {
     justify-content: center;
     gap: 1.5rem;
     width: 100%;
-    /*margin: 0 20px 0 20px;*/
+    margin: 0 20px 0 20px;
 }
 
 .post-box {
@@ -944,37 +966,9 @@ a.post-title {
         margin-left: 1rem;
     }
 
-    .post-box {
+/*    .post-box {
         margin-right: 16px;
-    }
-
-    .sidebar {
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        margin-top: 0;
-        padding-top: 2rem;
-        height: 100%;
-        border-radius: unset;
-    }
-
-    .backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 400ms ease;
-        z-index: 999;
-    }
-
-    .backdrop.active {
-        opacity: unset;
-        visibility: unset;
-    }
+    }*/
 }
 
 @media (max-width: 570px) {
@@ -1010,6 +1004,9 @@ a.post-title {
     .right {
         width: 30%;
     }
+    .sidebar.active {
+        width: 200px;
+    }
 }
 
     @media (max-width: 396px) {
@@ -1026,7 +1023,7 @@ a.post-title {
         }
 
         .post-box {
-            padding: 10px;
+            padding: 20px;
         }
 
         .header-title {
