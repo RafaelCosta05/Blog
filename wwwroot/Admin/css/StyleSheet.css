@@ -359,12 +359,6 @@ b {
     position: fixed;
 }
 
-.sidebar:hover {
-    background: var(--color-background);
-    box-shadow: none;
-    transition: all 400ms ease;
-}
-
 .sidebar h3 {
     font-weight: 500;
 }
@@ -804,17 +798,21 @@ b {
     color: var(--color-white);
 }
 
-.button-edit:hover {
-    background-color: var(--color-warning);
-    border-radius: var(--border-radius-2);
-    transition: ease 300ms;
+.star.filled {
+    color: gold;
 }
 
-.button-delete:hover {
-    background-color: var(--color-danger);
-    border-radius: var(--border-radius-2);
-    transition: ease 300ms;
+.star {
+    font-size: 30px;
+    color: gray;
+    transition: color 0.3s;
 }
+
+    .star.half-filled {
+        background: linear-gradient(90deg, gold 50%, gray 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
 /* =============================
    ADD NEW POSTS
@@ -824,10 +822,6 @@ b {
     margin-top: 3rem;
     margin-left: 1.2rem;
 }
-
-/* .add-posts h2 {
-    margin-bottom: 2rem;
-} */
 
 .add-posts .card {
     background: var(--color-white);
@@ -1031,7 +1025,6 @@ b {
 }
 
 .submit-user:hover {
-    /*        width: 50%;*/
     background: var(--color-success);
     transition: all 400ms ease;
 }
@@ -1198,11 +1191,11 @@ textarea:focus {
     box-shadow: var(--box-shadow);
 }
 
-form {
+/*form {
     display: flex;
     flex-direction: column;
     width: 100%;
-}
+}*/
 
 .form-container {
     display: flex;
@@ -1234,7 +1227,7 @@ form {
 
 .thumbnail-container {
     display: flex;
-    justify-content: flex-start; /* Garante que os itens fiquem à esquerda */
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -1327,19 +1320,6 @@ form {
         flex: 0 0 300px;
         max-width: 300px;
     }
-
-    .info-post h4 {
-        font-size: 1.2rem;
-    }
-
-    .info-post h5 {
-        font-size: 1rem;
-        color: var(--color-success);
-    }
-
-    .info-post p {
-        font-size: 1rem;
-    } 
 }
 
 /* =============================
@@ -1408,8 +1388,53 @@ form {
     }
 
     .img-chooseFile {
-        margin-right: 0; /* Remove margem quando a imagem estiver acima do input */
+        margin-right: 0; 
         margin-bottom: 10px;
+    }
+
+
+}
+
+@media screen and (max-width: 935px) {
+    .posts {
+        display: flex;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .thumbnail {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+
+    .info-post {
+        padding: 20px 0 0 0;
+        gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-card {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .buttons-post {
+        flex: 0 0 55px;
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        justify-content: end;
+        width: 100%;
+    }
+
+    .button-edit, .button-delete {
+        width: 70px;
     }
 }
 
@@ -1417,9 +1442,6 @@ form {
    MEDIA QUERIES 835
    ============================= */
     @media screen and (max-width: 835px) {
-        .info-post h4 {
-            font-size: 1rem;
-        }
 
         .input-group {
             width: 50%;
@@ -1552,7 +1574,7 @@ form {
             text-align: left;
         }
 
-        .posts {
+/*        .posts {
             display: flex;
         }
 
@@ -1599,7 +1621,7 @@ form {
 
         .button-edit, .button-delete {
             width: 70px;
-        }
+        }*/
     }
 
     /* =============================

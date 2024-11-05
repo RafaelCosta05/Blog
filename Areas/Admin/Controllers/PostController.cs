@@ -7,6 +7,7 @@ using Projeto.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Projeto.Utilites;
+using Microsoft.Extensions.Hosting;
 
 namespace Projeto.Areas.Admin.Controllers
 {
@@ -41,7 +42,7 @@ namespace Projeto.Areas.Admin.Controllers
 
             if (loggedInUserRole[0] == WebsiteRoles.WebsiteAdmin || loggedInUserRole[0] == WebsiteRoles.WebsiteEditor)
             {
-                listOfPosts = await _context.Posts!.Include(x => x.ApplicationUser).ToListAsync();
+                listOfPosts = await _context.Posts!.Include(x => x.ApplicationUser).Include(x => x.Ratings).ToListAsync();
             }
             else
             {
@@ -55,6 +56,9 @@ namespace Projeto.Areas.Admin.Controllers
                 CreatedDate = DateTime.Now,
                 ThumbnailUrl = x.ThumbnailUrl,
                 AuthorName = x.ApplicationUser!.FirstName + " " + x.ApplicationUser!.LastName,
+                AverageRating = x.Ratings != null && x.Ratings.Any()
+                    ? x.Ratings.Average(r => r.Value)
+                    : (double?)null,
                 IsPublic = x.IsPublic
                 
             }).ToList();
