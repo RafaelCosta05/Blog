@@ -568,21 +568,6 @@ section {
     transition: all ease 400ms;
 }
 
-/*    .post-box::after {
-        content: '';
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background: conic-gradient(from var(--angle), transparent 70%, var(--color-success));
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
-        z-index: -1;
-        padding: 2px;
-        animation: 3s spin linear infinite;
-        border-radius: var(--border-radius-2);
-    }*/
-
 .post-img {
     width: 100%;
     height: 200px;
@@ -596,7 +581,7 @@ a.post-title {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--color-success);
-    /*TO REMAIN TITLE IN 2 LINES*/
+    /*EM 2 LINHAS*/
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -611,6 +596,13 @@ a.post-title {
     text-transform: uppercase;
     font-weight: 400;
     margin-top: 4px;
+}
+
+.privacy-post {
+    margin-top: 1rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .post-short
