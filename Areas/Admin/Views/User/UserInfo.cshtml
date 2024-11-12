@@ -1,0 +1,72 @@
+﻿@model Projeto.ViewModels.UserInfoVM
+
+@{
+    ViewData["Title"] = "User Information";
+    string profilePicture = Model.ProfilePicturelUrl == null
+        ? "/ProfilePictures/default.jpg"
+        : $"/ProfilePictures/{Model.ProfilePicturelUrl}";
+}
+
+<div class="return">
+    <a asp-action="Index" asp-controller="User" class="link">
+        <span class="material-icons-sharp">arrow_back</span>
+        <h3>Voltar atrás</h3>
+    </a>
+</div>
+
+<h2>@Model.FirstName @Model.LastName</h2>
+<div class="card-userInfo">
+    <div class="form-container">
+        <div class="left-column">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="top-label-form">First Name</label>
+                    <input type="text" class="form-control" value="@Model.FirstName" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="top-label-form">Last Name</label>
+                    <input type="text" class="form-control" value="@Model.LastName" readonly />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="label-form">Email</label>
+                    <input type="email" class="form-control" value="@Model.Email" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="label-form">Phone Number</label>
+                    <input type="text" class="form-control" value="@Model.PhoneNumber" readonly />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="label-form">Username</label>
+                    <input type="text" class="form-control" value="@Model.UserName" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="label-form">Role</label>
+                    @if (@Model.Role == "Admin")
+                    {
+                        <input type="text" class="form-control success" value="@Model.Role" readonly />
+                    }                    
+                    @if (@Model.Role == "Editor")
+                    {
+                        <input type="text" class="form-control warning" value="@Model.Role" readonly />
+                    }                    
+                    @if (@Model.Role == "Author")
+                    {
+                        <input type="text" class="form-control danger" value="@Model.Role" readonly />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column user-info">
+            <div class="form-group user-info">
+                <label class="label-form">Profile Photo</label>
+                <img class="profile-photo-form" src="@profilePicture" alt="Foto de Perfil">
+            </div>
+        </div>
+    </div>
+</div>
+

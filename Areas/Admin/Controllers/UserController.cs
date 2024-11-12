@@ -69,9 +69,40 @@ namespace Projeto.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index", "Opening", new { area = "Admin" });
             }
-            //return View(vm);
-            //////return RedirectToAction("Index", "Opening", new { area = "Admin" });
         }
+
+        //#-----------------------------------#
+        //#             User-Info             #
+        //#-----------------------------------#
+        [HttpGet]
+        public async Task<IActionResult> UserInfo(string id)
+        {
+            var existingUser = await _userManager.FindByIdAsync(id);
+
+            if (existingUser == null)
+            {
+                _notification.Error("Utilizador não existe");
+                return View();
+            }
+
+            var role = await _userManager.GetRolesAsync(existingUser);
+            var vm = new UserInfoVM
+            {
+                Id = existingUser.Id,
+                FirstName = existingUser.FirstName,
+                LastName = existingUser.LastName,
+                UserName = existingUser.UserName,
+                Email = existingUser.Email,
+                PhoneNumber = existingUser.PhoneNumber,
+                Role = role.FirstOrDefault(),
+                ProfilePicturelUrl = existingUser.ProfilePictureUrl,
+            };
+
+            return View(vm); // Retorna a view usando o novo UserInfoVM
+        }
+
+
+
 
         //#-----------------------------------#
         //#           Reset Password          #

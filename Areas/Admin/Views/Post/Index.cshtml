@@ -18,6 +18,17 @@
             </div>
         </a>
     </div>
+
+    <div class="box">
+        <input type="checkbox" id="check" />
+        <div class="search-box">
+            <input type="text" placeholder="Search here" id="searchInput" oninput="" />
+            <label for="check" class="icon">
+                <span class="material-icons-sharp">search</span>
+            </label>
+        </div>
+    </div>
+
     <h2>Lista de Posts</h2>
     <div class="posts">    
         @foreach(var post in Model) {
@@ -77,3 +88,5 @@
         }
     </div>
 </div>
+
+<script src="~/Admin/js/searchbar.js"></script>

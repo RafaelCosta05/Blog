@@ -10,7 +10,17 @@
             <h3>Add User</h3>
         </div>
     </a>
-</div>    
+</div>
+
+<div class="box">
+    <input type="checkbox" id="check" />
+    <div class="search-box">
+        <input type="text" placeholder="Search here" id="searchInput" oninput="" />
+        <label for="check" class="icon">
+            <span class="material-icons-sharp">search</span>
+        </label>
+    </div>
+</div>
 
 <h2>Lista de Utilizadores</h2>
 <table class="table" id="myTable">
@@ -25,25 +35,29 @@
             <th>Actions</th>
         </tr>
     </thead>
-    
+
     <tbody>
-        @foreach(var user in Model) {
-            <tr>
+        @foreach (var user in Model)
+        {
+            <tr onclick="window.location.href='@Url.Action("UserInfo", "User", new { id = user.Id })'">
                 <td data-cell="First Name">@user.FirstName</td>
                 <td data-cell="Last Name">@user.LastName</td>
                 <td data-cell="UserName">@user.UserName</td>
                 <td data-cell="Email">@user.Email</td>
                 <td data-cell="Contact">@user.PhoneNumber</td>
                 <td data-cell="Role">
-                    @if (user.Role == "Admin") { 
+                    @if (user.Role == "Admin")
+                    {
                         <span class="admin">@user.Role</span>
                     }
-                    @if (user.Role == "Editor") {
+                    @if (user.Role == "Editor")
+                    {
                         <span class="editor">@user.Role</span>
                     }
-                    @if (user.Role == "Author") {
+                    @if (user.Role == "Author")
+                    {
                         <span class="author">@user.Role</span>
-                    }   
+                    }
                 </td>
                 <td data-cell="Actions">
                     <a asp-action="ResetPassword" asp-controller="User" asp-route-id="@user.Id">Reset Password</a>
@@ -51,4 +65,7 @@
             </tr>
         }
     </tbody>
+
 </table>
+
+<script src="~/Admin/js/searchbar.js"></script>

@@ -7,8 +7,20 @@
       "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:wwwroot\\blog\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\areas\\admin\\views\\user\\userinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:areas\\admin\\views\\user\\userinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\wwwroot\\admin\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:wwwroot\\admin\\css\\stylesheet.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|c:\\users\\pf1y0j1m\\desktop\\blog\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C06B71A2-D133-44B5-8038-93EF854CA2D9}|Projeto.csproj|solutionrelative:areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,8 +29,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 375,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +42,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFcAAABMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-05T22:38:20.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "StyleSheet.css",
               "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\css\\StyleSheet.css",
               "RelativeDocumentMoniker": "wwwroot\\blog\\css\\StyleSheet.css",
               "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\blog\\css\\StyleSheet.css",
               "RelativeToolTip": "wwwroot\\blog\\css\\StyleSheet.css",
-              "ViewState": "AQIAABMEAAAAAAAAAAAAACUEAAAbAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADYAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-05T22:18:28.744Z",
+              "WhenOpened": "2024-11-12T21:01:47.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-12T20:57:33.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-12T20:49:14.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StyleSheet.css",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheet.css",
+              "RelativeDocumentMoniker": "wwwroot\\Admin\\css\\StyleSheet.css",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\css\\StyleSheet.css",
+              "RelativeToolTip": "wwwroot\\Admin\\css\\StyleSheet.css",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-12T20:40:08.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserInfo.cshtml",
+              "DocumentMoniker": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\User\\UserInfo.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\User\\UserInfo.cshtml",
+              "ToolTip": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\Areas\\Admin\\Views\\User\\UserInfo.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\User\\UserInfo.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADcAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-12T20:11:29.638Z",
               "EditorCaption": ""
             }
           ]

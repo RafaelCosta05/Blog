@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dZiKddbXNRDp2V3VHBVSh4zPmJFJgAFvXlLGEJAKfiQ=",
+  "Hash": "XdZG85AgdkWCb4Zw03np6uISdsJi3c4wx/5u4w93vNA=",
   "Source": "Projeto",
   "BasePath": "_content/Projeto",
   "Mode": "Default",
@@ -1402,6 +1402,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\js\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\searchbar.js",
+      "SourceId": "Projeto",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\",
+      "BasePath": "_content/Projeto",
+      "RelativePath": "Admin/js/searchbar.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\js\\searchbar.js"
     },
     {
       "Identity": "C:\\Users\\PF1Y0J1M\\Desktop\\Blog\\wwwroot\\Admin\\js\\SideBar.js",
