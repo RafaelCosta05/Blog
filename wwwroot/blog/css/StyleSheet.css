@@ -21,6 +21,7 @@
     --padding-1: 1.2rem;
     --box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
     --color-fff: #fff;
+    --color-home: #363949;
 }
 
 .dark-mode-variables {
@@ -156,7 +157,7 @@ section {
     left: 0;
     width: 100%;
     z-index: 200;
-    background: var(--color-white);
+    background: transparent;
     transition: all 300ms ease;
 }
 
@@ -186,6 +187,7 @@ section {
         align-items: center;
         cursor: pointer;
         border-radius: var(--border-radius-1);
+        color: var(--color-fff);
     }
 
         .right .theme-toggler h3 {
@@ -233,7 +235,9 @@ section {
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-dark);
+
+    color: var(--color-fff);
+
     width: 154px;
 }
 
@@ -259,10 +263,20 @@ section {
 /* =============================
    HOME
    ============================= */
+.home.has-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('');
+    background-size: cover;
+    background-position: center;
+}
+
+    .home.has-background[data-background-url] {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(attr(data-background-url url));
+    }
+
 .home {
     width: 100%;
     min-height: 440px;
-    background: var(--color-white);
+    background-color: var(--color-info-dark);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,7 +284,7 @@ section {
 }
 
 .home-text {
-    color: var(--color-dark);
+    color: var(--color-fff);
     text-align: center;
     display: flex;
     align-items: center;
@@ -279,11 +293,11 @@ section {
 }
 
 .home-title {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
 }
 
 .home-subtitle {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
@@ -327,7 +341,7 @@ section {
 
 .search-box .icon {
     position: absolute;
-    right: -7px;
+    right: -4px;
     top: 0;
     width: 50px;
     background: var(--color-success);

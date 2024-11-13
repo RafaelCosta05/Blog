@@ -2,7 +2,6 @@ const menuIcon = document.querySelector('.menu-icon');
 const subMenu = document.querySelector('.sub-menu');
 const sideBar = document.querySelector('.sidebar');
 const backdrop = document.querySelector('.backdrop');
-const closeSideBar = document.querySelector('.close-sidebar-icon');
 
 function openSidebar() {
     sideBar.classList.toggle('active');
@@ -10,11 +9,6 @@ function openSidebar() {
 }
 
 backdrop.addEventListener('click', openSidebar);
-
-closeSideBar.addEventListener('click', () => {
-    sideBar.classList.toggle('active');
-    backdrop.classList.toggle('active');
-})
 
 function openSubMenu(element, iconSpan) {
     const subMenuContainer = element.parentElement.querySelector('.sub-menu-container');

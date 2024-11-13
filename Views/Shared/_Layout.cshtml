@@ -35,12 +35,12 @@
 <body>
     <!-- Navigation-->
     <header class="header">
-        <a asp-controller="Home" asp-action="Index" class="logo">Blog <span>Project</span></a>
+        <a asp-controller="Home" asp-action="Index" class="logo" style="@ViewData["ColorText"]">Blog <span>Project</span></a>
         <div class="right">
             <div class="login-div">
                 <a class="login" asp-area="Admin" asp-controller="User" asp-action="Login">Login</a>
             </div>
-            <div class="theme-toggler">
+            <div class="theme-toggler" style="@ViewData["ColorText"]" >
                 <span class="material-icons-sharp light-mode">light_mode</span>
                 <span class="material-icons-sharp dark-mode">dark_mode</span>
             </div>
