@@ -35,6 +35,7 @@ namespace Projeto.Areas.Admin.Controllers
             var loggedInUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
             var loggedInUserRole = await _userManager.GetRolesAsync(loggedInUser!);
 
+            //cria uma lista do tipo rating
             List<Rating> ratings;
 
             // Verifica se o usuário logado é Admin ou Editor
@@ -56,7 +57,9 @@ namespace Projeto.Areas.Admin.Controllers
                     .ToListAsync();
             }
 
-            // Mapeando ratings para RatingVM
+            //manda os dados das avaliaçoes para o viewModel
+            //isto e um array, onde depois na view usase um foreach
+            //para imprimir todos os rating
             var ratingsVM = ratings.Select(r => new RatingVM
             {
                 PostId = r.PostId,
@@ -65,6 +68,7 @@ namespace Projeto.Areas.Admin.Controllers
                 RatedAt = r.RatedAt
             }).ToList();
 
+            //retorna a view
             return View(ratingsVM);
         }
 

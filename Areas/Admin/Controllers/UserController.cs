@@ -98,7 +98,7 @@ namespace Projeto.Areas.Admin.Controllers
                 ProfilePicturelUrl = existingUser.ProfilePictureUrl,
             };
 
-            return View(vm); // Retorna a view usando o novo UserInfoVM
+            return View(vm);
         }
 
 

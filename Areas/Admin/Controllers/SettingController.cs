@@ -28,6 +28,7 @@ namespace Projeto.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            //vai buscar as informacoes da tabela setting (do site)
             var settings = _context.Settings!.ToList();
 
             if(settings.Count > 0)
@@ -46,16 +47,22 @@ namespace Projeto.Areas.Admin.Controllers
                 return View(vm);
             }
 
+            //se nao tiver nenhuma setting configurda
+            //atribiu um nome default
             var setting = new Setting()
             {
-                SiteName = "Demo Name"
+                SiteName = "Blog Project"
             };
 
+            //salva as configurações
             await _context.Settings!.AddAsync(setting);
             await _context.SaveChangesAsync();
 
+            //vai buscar novamente as settings a base de dados
             var createdSettings = _context.Settings!.ToList();
             
+            //rescreve os dados da base de dados
+            //com a informação do viewModel
             var createdVm = new SettingVM()
             {
                 Id = createdSettings[0].Id,
@@ -68,25 +75,31 @@ namespace Projeto.Areas.Admin.Controllers
                 GithubUrl = createdSettings[0].GithubUrl,
             };
             
+            //retorna a view
             return View(createdVm);
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(SettingVM vm)
         {
+            //se os dados que recebe nao forem válidos retorna a view
+            //com os dados que estao corretos
             if(!ModelState.IsValid)
             {
                 return View(vm);
             }
 
+            //vai buscar as configuraçoes a base de dados acpartir do id 
             var setting = await _context.Settings!.FirstOrDefaultAsync(x=> x.Id == vm.Id);
 
             if (setting == null)
             {
-                _notification.Error("Something went wrong");
+                _notification.Error("Algo inesperado aconteceu");
                 return View(vm);
             }
 
+
+            //rescreve os dados
             setting.SiteName = vm.SiteName;
             setting.Title = vm.Title;
             setting.ShortDescription = vm.ShortDescription;

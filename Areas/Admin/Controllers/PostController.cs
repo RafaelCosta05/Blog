@@ -36,35 +36,54 @@ namespace Projeto.Areas.Admin.Controllers
         //#-----------------------------------#
         public async Task<IActionResult> Index()
         {
+            //criação da lista
             var listOfPosts = new List<Post>();
+            //Usuário logado
             var loggedInUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
+            //Role do usuário logado (lista de roles)
             var loggedInUserRole = await _userManager.GetRolesAsync(loggedInUser!);
 
+            //se o primeira linha da lista for admin ou editor deixa ver todos os posts
             if (loggedInUserRole[0] == WebsiteRoles.WebsiteAdmin || loggedInUserRole[0] == WebsiteRoles.WebsiteEditor)
             {
-                listOfPosts = await _context.Posts!.Include(x => x.ApplicationUser).Include(x => x.Ratings).ToListAsync();
+                listOfPosts = await _context.Posts!
+                    .Include(x => x.ApplicationUser)
+                    .Include(x => x.Ratings)
+                    .ToListAsync();
             }
+            //se ao for nem admin nem editor vai ser author entao
+            //so deixa ver os posts criados pelo utilizador
             else
             {
-                listOfPosts = await _context.Posts!.Include(x => x.ApplicationUser).Where(x => x.ApplicationUser!.Id == loggedInUser!.Id).ToListAsync();
+                listOfPosts = await _context.Posts!
+                    .Include(x => x.ApplicationUser)
+                    .Include(x => x.Ratings)
+                    //este where faz uma comparação com o criador do post
+                    //se for igual mostra o post 
+                    .Where(x => x.ApplicationUser!.Id == loggedInUser!.Id)
+                    .ToListAsync();
             }
 
             var listofPostsVM = listOfPosts.Select(x => new PostVM()
             {
                 Id = x.Id,
                 Title = x.Title,
-                CreatedDate = DateTime.Now,
+                CreatedDate = x.CreatedAt,
                 ThumbnailUrl = x.ThumbnailUrl,
                 AuthorName = x.ApplicationUser!.FirstName + " " + x.ApplicationUser!.LastName,
+                //calcula media das avaliações do post
+                //senao houver avaliações retorna null
                 AverageRating = x.Ratings != null && x.Ratings.Any()
                     ? x.Ratings.Average(r => r.Value)
                     : (double?)null,
-                IsPublic = x.IsPublic
+                IsPublic = x.IsPublic,
+                Slug = x.Slug
                 
             }).ToList();
 
             return View(listofPostsVM);
         }
+
 
         //#-----------------------------------#
         //#               Create              #
@@ -78,6 +97,8 @@ namespace Projeto.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreatePostVM vm)
         {
+            //verificação se os dados estao dentro dos requisitos
+            //senao envia erros e devolve a pagina com os dados que ja estao corretos
             if (!ModelState.IsValid)
             {
                 foreach (var state in ModelState)
@@ -90,8 +111,10 @@ namespace Projeto.Areas.Admin.Controllers
                 return View(vm);
             }
 
+            //buscar user logado ou seja quem esta a criar o post
             var loggedInUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
 
+            //cria um novo objeto do tipo post
             var post = new Post
             {
                 Title = vm.Title,
@@ -100,6 +123,7 @@ namespace Projeto.Areas.Admin.Controllers
                 ApplicationUserId = loggedInUser!.Id,
                 IsPublic = vm.IsPublic // Definindo a privacidade
             };
+
 
             if (post.Title != null)
             {
@@ -131,7 +155,8 @@ namespace Projeto.Areas.Admin.Controllers
             var loggedInUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
             var loggedInUserRole = await _userManager.GetRolesAsync(loggedInUser!);
 
-            if (loggedInUserRole[0] == WebsiteRoles.WebsiteAdmin || loggedInUser?.Id == post?.ApplicationUserId)
+            if (loggedInUserRole[0] == WebsiteRoles.WebsiteAdmin || loggedInUserRole[0] == WebsiteRoles.WebsiteEditor 
+                ||  loggedInUser?.Id == post?.ApplicationUserId)
             {
                 _context.Posts!.Remove(post!);
                 await _context.SaveChangesAsync();
@@ -148,24 +173,33 @@ namespace Projeto.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var post = await _context.Posts!.FirstOrDefaultAsync(x => x.Id == id);
 
+            var post = await _context.Posts!
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            // Se o post não for encontrado, exibe um erro e retorna a view
             if (post == null)
             {
                 _notification.Error("Não foi encontrado esse Post");
                 return View();
             }
 
+            // Obtém o usuário logado
+            var loggedInUser = await _userManager.Users
+                .FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
 
-            var loggedInUser = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity!.Name);
+            // Obtém o papel (role) do usuário logado
             var loggedInUserRole = await _userManager.GetRolesAsync(loggedInUser!);
 
-            if (!(loggedInUserRole.Contains(WebsiteRoles.WebsiteAdmin) || loggedInUserRole.Contains(WebsiteRoles.WebsiteEditor))
+            // Se o usuário não for admin ou editor, verifica se ele é o autor do post
+            // Se não for, redireciona para a página de acesso negado
+            if (!(loggedInUserRole[0] == WebsiteRoles.WebsiteAdmin || loggedInUserRole[0] == WebsiteRoles.WebsiteEditor)
                 && loggedInUser?.Id != post?.ApplicationUserId)
             {
                 return RedirectToAction("AccessDenied", "User");
             }
 
+            // Cria um ViewModel com as informações do post para editar
             var vm = new CreatePostVM()
             {
                 Id = post.Id,
@@ -173,11 +207,14 @@ namespace Projeto.Areas.Admin.Controllers
                 ShortDescription = post.ShortDescription,
                 Description = post.Description,
                 ThumbnailUrl = post.ThumbnailUrl,
-                IsPublic = post.IsPublic
+                IsPublic = post.IsPublic,
+                Slug = post.Slug,  // Passa o Slug para o ViewModel
             };
 
+            // Retorna a view com o ViewModel
             return View(vm);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Edit(CreatePostVM vm)
@@ -195,6 +232,7 @@ namespace Projeto.Areas.Admin.Controllers
                 return View();
             }
 
+            //vai rescrever os dados que recebeu do viewModel no Model
             post.Title = vm.Title;
             post.ShortDescription = vm.ShortDescription;
             post.Description = vm.Description;
@@ -218,17 +256,21 @@ namespace Projeto.Areas.Admin.Controllers
         {
             string uniqueFileName = "";
 
+            //combina o caminho do root mais das thumbnails
             var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "Thumbnails/Posts");
 
+            //da o nome ao ficheiro com um GUID mais o nome do ficheiro
             uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
 
+            //o caminho da imagem vai ser a folder
+            //mais o nome
             var filePath = Path.Combine(folderPath, uniqueFileName);
 
             using (FileStream fileStream = System.IO.File.Create(filePath))
             {
                 file.CopyTo(fileStream);
-
             }
+            //retorna o uniqueFileName pois e o que vai salvar na base de dados
             return uniqueFileName;
         }
     }

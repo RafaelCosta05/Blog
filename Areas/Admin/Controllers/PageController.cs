@@ -32,6 +32,7 @@ namespace Projeto.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> About()
         {
+            //vai verificar se existe aquela pagina pelo slug
             var page = await _context.Pages!.FirstOrDefaultAsync(x => x.Slug == "about");
 
             if (page == null)
@@ -40,6 +41,7 @@ namespace Projeto.Areas.Admin.Controllers
                 return RedirectToAction("Index", "User");
             }
 
+            //vai buscar as informaçoes a base de dados
             var vm = new PageVM()
             {
                 Id = page!.Id,
@@ -48,6 +50,7 @@ namespace Projeto.Areas.Admin.Controllers
                 Description = page.Description,
                 ThumbnailUrl = page.ThumbnailUrl,
             };
+            //retorna a view 
             return View(vm);
         }
 
@@ -67,10 +70,10 @@ namespace Projeto.Areas.Admin.Controllers
                 return RedirectToAction("Index", "User");
             }
 
+            //rescreve os dados na base de dados com as novas informações
             page.Title = vm.Title;
             page.ShortDescription = vm.ShortDescription;
             page.Description = vm.Description;
-            //page.ThumbnailUrl = vm.ThumbnailUrl;
 
             if (vm.Thumbnail != null)
             {

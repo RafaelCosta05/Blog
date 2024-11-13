@@ -3,16 +3,16 @@
 @{
     ViewData["Title"] = "Post";
 
-    // string thumbnail = "";
+    string thumbnail = "";
 
-    // if (Model.ThumbnailUrl == null)
-    // {
-    //     thumbnail = "assets/img/post-bg.jpg";
-    // }
-    // else
-    // {
-    //     thumbnail = "/Thumbnails/Posts/" + Model.ThumbnailUrl;
-    // } 
+    if (Model.ThumbnailUrl == null)
+    {
+        thumbnail = "assets/img/post-bg.jpg";
+    }
+    else
+    {
+        thumbnail = "/Thumbnails/Posts/" + Model.ThumbnailUrl;
+    } 
 }
 
 <div class="post-details">
@@ -20,18 +20,11 @@
 <div class="post-header">
     <div class="header-content post-container">
         @* <span class="material-icons-sharp">arrow_back</span> *@
-        <a asp-area="Blog" asp-controller="Home" asp-action="Index">
+            <a class="return-icon" asp-area="Blog" asp-controller="Home" asp-action="Index">
             <span class="material-icons-sharp">arrow_back</span>
         </a>
         <h1 class="header-title">@Model.Title</h1>
-        @if (Model.ThumbnailUrl == null)
-        {
-            <img class="header-img" src="~/Thumbnails/default_image.png" />
-        }
-        else
-        {
-            <img class="header-img" src="~/Thumbnails/Posts/@Model.ThumbnailUrl" />
-        }
+            <img class="header-img" src="@thumbnail" />
     </div>
 </div>
 

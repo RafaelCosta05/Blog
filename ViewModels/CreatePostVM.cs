@@ -15,5 +15,6 @@ namespace Projeto.ViewModels
         public  IFormFile? Thumbnail { get; set; }
         public DateTime? CreatedDate { get; set; }
         public bool IsPublic { get; set; }
+        public string? Slug { get; set; }
     }
 }

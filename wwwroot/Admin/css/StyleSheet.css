@@ -18,6 +18,7 @@
     --padding-1: 1.2rem;
     --box-shadow: 0 2rem 3rem var(--color-light);
     --box-shadow-navbar: 0 2rem 3rem var(--color-light);
+    --color-fff: #fff;
 }
 
 .dark-mode-variables {
@@ -152,8 +153,10 @@ a:visited {
 }
 
 .accessDenied {
-    margin-top: 3rem;
-    margin-left: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 }
 
 .accessDenied h1 {
@@ -363,12 +366,12 @@ b {
     font-weight: 500;
 }
 
-.sidebar .min-sidebar-icon {
+    .sidebar .min-sidebar-icon {
         display: flex;
         justify-content: flex-end;
         align-items: center;
         margin-top: 1rem;
-        color: var(--color-dark);
+        color: var(--color-fff);
         position: relative;
         left: 11px;
     }
@@ -571,7 +574,7 @@ b {
     transition: all 400ms ease;
     border-radius: var(--card-border-radius);
     background: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-fff);
 }
 
 .actions .add-user div {
@@ -627,10 +630,11 @@ b {
 
 .search-box .icon {
     position: absolute;
-    right: -13px;
+    right: -7px;
     top: 0;
     width: 50px;
     background: var(--color-success);
+    color: var(--color-fff);
     height: 100%;
     text-align: center;
     line-height: 55px;
@@ -659,10 +663,10 @@ b {
 
 .main-content table thead tr th,
 .main-content table td {
-    text-align: left; /* Alinha o conteúdo à esquerda */
-    width: auto; /* Permite que a largura seja distribuída igualmente */
-    overflow: hidden; /* Esconde conteúdo extra caso a largura seja insuficiente */
-    white-space: nowrap; /* Evita que o texto quebre de linha */
+    text-align: left;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap; 
 }
 
 .main-content table:hover {
@@ -679,6 +683,10 @@ b {
     text-align: left;
     height: 2.8rem;
     color: var(--color-dark-variant);
+}
+
+.main-content table tbody tr {
+    cursor: pointer;
 }
 
 .main-content table tbody tr:hover {
@@ -703,7 +711,6 @@ b {
 .rating-container {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 6px;
 }
 
@@ -777,7 +784,7 @@ b {
 .actions .ratings:hover {
     transition: all 400ms ease;
     border-radius: var(--card-border-radius);
-    color: var(--color-white);
+    color: var(--color-fff);
 }
 
 .actions .add-post:hover {
@@ -860,12 +867,12 @@ b {
 
 .button-edit {
     background: var(--color-warning);
-    color: var(--color-white);
+    color: var(--color-fff);
 }
 
 .button-delete {
     background: var(--color-danger);
-    color: var(--color-white);
+    color: var(--color-fff);
 }
 
 .star.filled {
@@ -1185,7 +1192,7 @@ input[type="text"]:focus, input[type="email"]:focus:focus {
 
 .lockOpen {
     margin-top: -170%;
-    color: var(--color-success);
+    color: #1B9C85;
 }
 
 .span {
@@ -1259,7 +1266,7 @@ textarea:focus {
     /PRIVACY E SETTING
    ============================= */
 
-form {
+.form {
     width: 100%;
 }
 
@@ -1679,6 +1686,10 @@ form {
         .main-content table tbody td,
         .main-content table tbody td a {
             text-align: left;
+        }
+
+        .box .search-box {
+            margin-left: 4px;
         }
     }
 

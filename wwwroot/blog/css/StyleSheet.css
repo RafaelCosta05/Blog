@@ -20,6 +20,7 @@
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
     --box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    --color-fff: #fff;
 }
 
 .dark-mode-variables {
@@ -71,9 +72,9 @@ a {
     text-decoration: none;
 }
 
-    a:visited {
+/*    a:visited {
         color: var(--color-dark);
-    }
+    }*/
     /* =============================
    CARD ANIMATION
    ============================= */
@@ -246,7 +247,7 @@ section {
     font-weight: 500;
     border-radius: var(--border-radius-1);
     background: var(--color-success);
-    color: var(--color-white);
+    color: var(--color-fff);
 }
 
     .login:hover {
@@ -335,6 +336,7 @@ section {
     line-height: 55px;
     border-radius: 25px;
     font-size: 25px;
+    color: var(--color-fff)
 }
 
 #check:checked ~ .search-box .icon {
@@ -375,7 +377,7 @@ section {
 
     .active-filter {
         background: var(--color-success);
-        color: var(--color-dark);
+        color: var(--color-fff);
         padding: 4px 10px;
         border-radius: var(--border-radius-1);
     }
@@ -756,6 +758,14 @@ a.post-title {
     margin-top: 7rem !important;
 }
 
+.return-icon {
+    color: var(--color-dark);
+}
+
+.return-icon:hover {
+    color: var(--color-success);
+}
+
 .back-home {
     color: var(--color-success);
     font-size: 0.9rem;
@@ -783,8 +793,6 @@ a.post-title {
 
 .sub-heading {
     font-size: 1.2rem;
-/*    margin-top: 4rem;
-    margin-bottom: 2rem;*/
 }
 
 .post-text{
@@ -982,6 +990,7 @@ a.post-title {
     width: 10rem;
     transition: all ease 300ms;
     cursor: pointer;
+    font-family: 'poppins', sans-serif;
 }
 
     /* =============================
